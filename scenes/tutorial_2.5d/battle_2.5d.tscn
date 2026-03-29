@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bd1c2co4denh4"]
+
+[ext_resource type="Texture2D" uid="uid://cqchgy4yj2n75" path="res://scenes/tutorial_2.5d/assets/Low_battlebacks_sewer.png" id="1_yk8q0"]
+[ext_resource type="Script" uid="uid://cy1gd11qoiwdl" path="res://scenes/tutorial_2.5d/camera_3d.gd" id="1_yuocw"]
+[ext_resource type="Texture2D" uid="uid://cyf0c4afjdwdu" path="res://scenes/tutorial_2.5d/assets/Low_battlebacks_forest.png" id="2_yuocw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qsygs"]
+albedo_texture = ExtResource("1_yk8q0")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yk8q0"]
+material = SubResource("StandardMaterial3D_qsygs")
+size = Vector2(240, 80)
+
+[node name="Node3D" type="Node3D" unique_id=1429748870]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1883402959]
+transform = Transform3D(1, 0, 0, 0, 0.9563048, 0.2923717, 0, -0.2923717, 0.9563048, 0, 14, 14)
+script = ExtResource("1_yuocw")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1852507803]
+transform = Transform3D(11, 0, 0, 0, 3.6705182, 0.98351234, 0, -0.98351234, 3.6705182, 0, 0, -40)
+offset = Vector2(0, 540)
+texture = ExtResource("2_yuocw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1672848836]
+mesh = SubResource("PlaneMesh_yk8q0")

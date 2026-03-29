@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c53qmopqxjyox"]
+
+[ext_resource type="Script" uid="uid://b7amc3px6qctc" path="res://scenes/tutorial_object_ref/object_ref.gd" id="1_326ef"]
+
+[node name="ObjectRef" type="Node" unique_id=435404432]
+script = ExtResource("1_326ef")

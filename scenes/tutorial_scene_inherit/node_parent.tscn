@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c604hifucdogv"]
+
+[ext_resource type="Script" uid="uid://bd0wi2a5ftt74" path="res://scenes/tutorial_scene_inherit/node_parent.gd" id="1_xu18w"]
+[ext_resource type="Script" uid="uid://ca4le6ojsn7ol" path="res://scenes/tutorial_scene_inherit/state_a.gd" id="2_yeicl"]
+[ext_resource type="Script" uid="uid://pgbt81n1iouo" path="res://scenes/tutorial_scene_inherit/state_b.gd" id="3_do8ow"]
+
+[node name="NodeParent" type="Node" unique_id=1369627728]
+script = ExtResource("1_xu18w")
+
+[node name="NodeA" type="Node" parent="." unique_id=572231375]
+script = ExtResource("2_yeicl")
+
+[node name="NodeB" type="Node" parent="." unique_id=2113693061]
+script = ExtResource("3_do8ow")

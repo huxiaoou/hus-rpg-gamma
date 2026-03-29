@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b02jyic0w6fwf"]
+
+[ext_resource type="PackedScene" uid="uid://o3v3u20j0u2l" path="res://scenes/tutorial_area2d_monitor/area2d_monitor.tscn" id="1_3cm1m"]
+
+[node name="Unit" type="Node2D" unique_id=50789938]
+
+[node name="Area2dMonitor" parent="." unique_id=1775397974 instance=ExtResource("1_3cm1m")]

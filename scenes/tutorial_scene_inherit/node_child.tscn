@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://canvg773r6dva"]
+
+[ext_resource type="PackedScene" uid="uid://c604hifucdogv" path="res://scenes/tutorial_scene_inherit/node_parent.tscn" id="1_8a18d"]
+
+[node name="NodeChild" unique_id=1369627728 instance=ExtResource("1_8a18d")]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://wwgner8ky7ad"]
 
 [ext_resource type="Texture2D" uid="uid://bn7yf6dtd5a1p" path="res://assets/SampleCharacter_Profile_1.png" id="1_0sppp"]
-[ext_resource type="Shader" uid="uid://ba1a8d8v5753w" path="res://scenes/tutorial_shader.gdshader" id="1_xhmo8"]
+[ext_resource type="Shader" uid="uid://ba1a8d8v5753w" path="res://scenes/tutorial_shader/tutorial_shader.gdshader" id="1_xhmo8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1gxs7"]
 shader = ExtResource("1_xhmo8")
