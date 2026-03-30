@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://c0k0c28uk8fu7"]
+
+[ext_resource type="PlaneMesh" uid="uid://dbl2xvnem4ex3" path="res://scenes/tutorial_2.5d/resources/plane_mesh_background1.tres" id="1_ghkri"]
+[ext_resource type="PlaneMesh" uid="uid://lxmvwok2tcpi" path="res://scenes/tutorial_2.5d/resources/plane_mesh_background2.tres" id="2_hr0xl"]
+[ext_resource type="PlaneMesh" uid="uid://cj4t0x103ks03" path="res://scenes/tutorial_2.5d/resources/plane_mesh_background3.tres" id="3_de368"]
+[ext_resource type="PlaneMesh" uid="uid://bwf8ahicqi53n" path="res://scenes/tutorial_2.5d/resources/plane_mesh_background4.tres" id="4_cijk5"]
+[ext_resource type="PlaneMesh" uid="uid://nyq160xcp1sg" path="res://scenes/tutorial_2.5d/resources/plane_mesh_background5.tres" id="5_e4mrr"]
+[ext_resource type="PlaneMesh" uid="uid://b1bqf1c8ruiik" path="res://scenes/tutorial_2.5d/resources/plane_mesh_background6.tres" id="6_s4kfg"]
+[ext_resource type="PlaneMesh" uid="uid://ciih1uwc6f31" path="res://scenes/tutorial_2.5d/resources/plane_mesh_background7.tres" id="7_y7whq"]
+
+[node name="ParallaxBackground" type="Node3D" unique_id=1478257144]
+
+[node name="MeshBackground1" type="MeshInstance3D" parent="." unique_id=2129108217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+mesh = ExtResource("1_ghkri")
+
+[node name="MeshBackground2" type="MeshInstance3D" parent="." unique_id=395828623]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, -0.5)
+mesh = ExtResource("2_hr0xl")
+
+[node name="MeshBackground3" type="MeshInstance3D" parent="." unique_id=581419437]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, -1)
+mesh = ExtResource("3_de368")
+
+[node name="MeshBackground4" type="MeshInstance3D" parent="." unique_id=314032347]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, -1.5)
+mesh = ExtResource("4_cijk5")
+
+[node name="MeshBackground5" type="MeshInstance3D" parent="." unique_id=1829678976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, -2)
+mesh = ExtResource("5_e4mrr")
+
+[node name="MeshBackground6" type="MeshInstance3D" parent="." unique_id=298740340]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, -2.5)
+mesh = ExtResource("6_s4kfg")
+
+[node name="MeshBackground7" type="MeshInstance3D" parent="." unique_id=790578991]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, -3)
+mesh = ExtResource("7_y7whq")

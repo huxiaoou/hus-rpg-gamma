@@ -1,0 +1,15 @@
+[gd_resource type="PlaneMesh" format=3 uid="uid://cj4t0x103ks03"]
+
+[ext_resource type="Texture2D" uid="uid://dl5uas535rxlq" path="res://scenes/tutorial_2.5d/assets/3.png" id="1_trhtn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8rlx"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_trhtn")
+uv1_scale = Vector3(5, 1, 1)
+
+[resource]
+material = SubResource("StandardMaterial3D_f8rlx")
+size = Vector2(160, 18)
+orientation = 2

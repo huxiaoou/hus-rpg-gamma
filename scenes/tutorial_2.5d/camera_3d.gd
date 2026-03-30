@@ -1,11 +1,11 @@
 extends Camera3D
 
-@export var speed: float = 10.0
-@export var acceleration: float = 5.0
+@export var speed: float = 8.0
+@export var acceleration: float = 1.0
 
 # Optional: Set boundaries so the "audience" doesn't fly off into the void
-@export var limit_x: Vector2 = Vector2(-20, 20)
-@export var limit_z: Vector2 = Vector2(0, 15)
+@export var limit_x: Vector2 = Vector2(-16, 16)
+@export var limit_z: Vector2 = Vector2(-15, 2.5)
 
 func _process(delta):
     # 1. Get the input vector from WASD

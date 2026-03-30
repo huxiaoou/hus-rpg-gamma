@@ -1,0 +1,14 @@
+[gd_resource type="PlaneMesh" format=3 uid="uid://b68i32oivo1ef"]
+
+[ext_resource type="Texture2D" uid="uid://cspoyg5f0yen4" path="res://scenes/tutorial_2.5d/assets/Tile_01-512x512.png" id="1_dkyy4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8rlx"]
+albedo_color = Color(0.7930586, 0.94888014, 0.9478008, 1)
+albedo_texture = ExtResource("1_dkyy4")
+uv1_scale = Vector3(20, 8, 1)
+
+[resource]
+lightmap_size_hint = Vector2i(802, 322)
+material = SubResource("StandardMaterial3D_f8rlx")
+add_uv2 = true
+size = Vector2(160, 64)

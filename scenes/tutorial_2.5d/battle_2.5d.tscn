@@ -1,27 +1,38 @@
 [gd_scene format=3 uid="uid://bd1c2co4denh4"]
 
-[ext_resource type="Texture2D" uid="uid://cqchgy4yj2n75" path="res://scenes/tutorial_2.5d/assets/Low_battlebacks_sewer.png" id="1_yk8q0"]
-[ext_resource type="Script" uid="uid://cy1gd11qoiwdl" path="res://scenes/tutorial_2.5d/camera_3d.gd" id="1_yuocw"]
-[ext_resource type="Texture2D" uid="uid://cyf0c4afjdwdu" path="res://scenes/tutorial_2.5d/assets/Low_battlebacks_forest.png" id="2_yuocw"]
+[ext_resource type="PackedScene" uid="uid://ch3gx7uiqoumo" path="res://scenes/tutorial_2.5d/camera_level.tscn" id="1_nc4xs"]
+[ext_resource type="PlaneMesh" uid="uid://b68i32oivo1ef" path="res://scenes/tutorial_2.5d/resources/plane_mesh_battleground.tres" id="3_w76ru"]
+[ext_resource type="PackedScene" uid="uid://bp5n4dkav4ffm" path="res://scenes/tutorial_2.5d/unit.tscn" id="4_nc4xs"]
+[ext_resource type="PackedScene" uid="uid://c0k0c28uk8fu7" path="res://scenes/tutorial_2.5d/parallax_background.tscn" id="5_he28h"]
+[ext_resource type="LightmapGIData" uid="uid://c883rjgt8mho1" path="res://scenes/tutorial_2.5d/battle_2.5d.lmbake" id="5_w76ru"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qsygs"]
-albedo_texture = ExtResource("1_yk8q0")
-uv1_scale = Vector3(10, 10, 10)
+[sub_resource type="Sky" id="Sky_i440s"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_yk8q0"]
-material = SubResource("StandardMaterial3D_qsygs")
-size = Vector2(240, 80)
+[sub_resource type="Environment" id="Environment_qsygs"]
+background_mode = 2
+sky = SubResource("Sky_i440s")
 
 [node name="Node3D" type="Node3D" unique_id=1429748870]
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1883402959]
-transform = Transform3D(1, 0, 0, 0, 0.9563048, 0.2923717, 0, -0.2923717, 0.9563048, 0, 14, 14)
-script = ExtResource("1_yuocw")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=240894872]
+environment = SubResource("Environment_qsygs")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1852507803]
-transform = Transform3D(11, 0, 0, 0, 3.6705182, 0.98351234, 0, -0.98351234, 3.6705182, 0, 0, -40)
-offset = Vector2(0, 540)
-texture = ExtResource("2_yuocw")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=925910102]
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 16, -119.18556)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1672848836]
-mesh = SubResource("PlaneMesh_yk8q0")
+[node name="CameraLevel" parent="." unique_id=648065497 instance=ExtResource("1_nc4xs")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 14, -2)
+
+[node name="ParallaxBackground" parent="." unique_id=792918353 instance=ExtResource("5_he28h")]
+transform = Transform3D(1, 0, 0, 0, 0.8660253, 0.49999997, 0, -0.49999997, 0.8660253, 0, 0, -26)
+
+[node name="MeshBattleground" type="MeshInstance3D" parent="." unique_id=1200010200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -32)
+mesh = ExtResource("3_w76ru")
+
+[node name="CharacterBody3D" parent="." unique_id=97846133 instance=ExtResource("4_nc4xs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+
+[node name="LightmapGI" type="LightmapGI" parent="." unique_id=241739947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22.919884)
+light_data = ExtResource("5_w76ru")

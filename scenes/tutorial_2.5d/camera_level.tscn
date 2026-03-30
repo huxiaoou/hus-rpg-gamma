@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ch3gx7uiqoumo"]
+
+[ext_resource type="Script" uid="uid://cy1gd11qoiwdl" path="res://scenes/tutorial_2.5d/camera_3d.gd" id="1_s7n1q"]
+
+[node name="Camera3D" type="Camera3D" unique_id=648065497]
+keep_aspect = 0
+fov = 108.0
+size = 14.373
+script = ExtResource("1_s7n1q")
