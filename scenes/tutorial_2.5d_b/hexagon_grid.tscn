@@ -14,5 +14,5 @@ light_color = Color(0.48107743, 0.4654665, 0.45347142, 1)
 light_energy = 5.26
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1907756040]
-transform = Transform3D(1, 0, 0, 0, 0.17364822, 0.9848077, 0, -0.9848077, 0.17364822, 0, 10, 0)
+transform = Transform3D(0.93199533, -0.35696387, 0.062942386, 0.12419217, 0.47761294, 0.8697485, -0.3405308, -0.8027844, 0.48946512, 10.2812, 5.400776, 8.496761)
 script = ExtResource("2_sgm28")

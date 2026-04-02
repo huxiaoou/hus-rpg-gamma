@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c1vnad1g6i8o8" path="res://scenes/tutorial_2.5d_b/player.tscn" id="4_r78q7"]
 [ext_resource type="Texture2D" uid="uid://cj1fccx33onx" path="res://scenes/tutorial_2.5d_b/assets/TX Props with Shadow.png" id="5_dn4dh"]
 [ext_resource type="PackedScene" uid="uid://bva6bbfne6ek7" path="res://scenes/tutorial_2.5d_b/test_box.tscn" id="5_uj3wc"]
-[ext_resource type="PackedScene" uid="uid://cx1x3bs3w15xq" path="res://scenes/tutorial_2.5d_b/test_hexagon.tscn" id="7_x71lt"]
+[ext_resource type="PackedScene" uid="uid://cx1x3bs3w15xq" path="res://scenes/tutorial_2.5d_b/hexagon_tile_highland.tscn" id="7_x71lt"]
 [ext_resource type="PackedScene" uid="uid://d0v5ll3h0rwmx" path="res://scenes/tutorial_2.5d_b/another_hexagon.tscn" id="8_6v5tn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r78q7"]
@@ -46,7 +46,7 @@ dof_blur_far_enabled = true
 dof_blur_far_distance = 8.0
 dof_blur_near_enabled = true
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_sf76e"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_6v5tn"]
 _surfaces = [{
 "aabb": AABB(-0.8660254, 0, -1, 1.7320508, 1e-05, 2),
 "attribute_data": PackedByteArray("AAAAPwAAAD/s2W4/AACAPuzZbj8AAEA/AAAAPwAAAD/s2W4/AABAPwAAAD8AAIA/AAAAPwAAAD8AAAA/AACAP6QwiT0AAEA/AAAAPwAAAD+kMIk9AABAP6QwiT0AAIA+AAAAPwAAAD+kMIk9AACAPgAAAD8AAAAAAAAAPwAAAD8AAAA/AAAAAOzZbj8AAIA+"),
@@ -595,6 +595,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44605094, 0)
 
 [node name="MeshHexagon" parent="." unique_id=174747447 instance=ExtResource("8_6v5tn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5327394, 0.34359217, -1.2688392)
-mesh = SubResource("ArrayMesh_sf76e")
+mesh = SubResource("ArrayMesh_6v5tn")
 
 [editable path="Player"]

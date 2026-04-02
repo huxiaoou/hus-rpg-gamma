@@ -1,25 +1,25 @@
-[gd_scene format=3 uid="uid://cx1x3bs3w15xq"]
+[gd_scene format=3 uid="uid://bglhxxcyxef87"]
 
-[ext_resource type="Texture2D" uid="uid://c466bsldsi82t" path="res://scenes/tutorial_2.5d_b/assets/hexOcean03.png" id="1_axoht"]
-[ext_resource type="Script" uid="uid://dq7of18g4gld4" path="res://scenes/tutorial_2.5d_b/test_hexagon.gd" id="2_lry6u"]
+[ext_resource type="Script" uid="uid://dq7of18g4gld4" path="res://scenes/tutorial_2.5d_b/hexagon_tile.gd" id="1_1apme"]
+[ext_resource type="Texture2D" uid="uid://bnpwp4kbx2048" path="res://scenes/tutorial_2.5d_b/assets/hexPlains00.png" id="2_1apme"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lry6u"]
-albedo_texture = ExtResource("1_axoht")
-uv1_scale = Vector3(2.35, 1.34, 2)
+uv1_scale = Vector3(2.35, 1.34, 1)
 uv1_offset = Vector3(-0.09, 0.66, 0)
 grow = true
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_poh2k"]
 material = SubResource("StandardMaterial3D_lry6u")
-height = 0.2
-radial_segments = 6
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_poh2k"]
 height = 0.21533203
 
 [node name="Hexagon" type="MeshInstance3D" unique_id=981755726]
 mesh = SubResource("CylinderMesh_poh2k")
-script = ExtResource("2_lry6u")
+script = ExtResource("1_1apme")
+tex = ExtResource("2_1apme")
+uv1_scale = Vector3(2.35, 1.4, 2)
+uv1_offset = Vector3(-0.09, 0.6, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2058147982]
 
