@@ -18,7 +18,8 @@ sky = SubResource("Sky_i440s")
 environment = SubResource("Environment_qsygs")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=925910102]
-transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 16, -119.18556)
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 18.507523, 3.0534286)
+light_color = Color(0.32066798, 0.32066798, 0.32066798, 1)
 
 [node name="CameraLevel" parent="." unique_id=648065497 instance=ExtResource("1_nc4xs")]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 14, -2)

@@ -2,11 +2,18 @@
 
 [ext_resource type="Texture2D" uid="uid://feh3cumvr47r" path="res://scenes/tutorial_2.5d/assets/2.png" id="1_k55fb"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_k55fb"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ko5ab"]
+noise = SubResource("FastNoiseLite_k55fb")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8rlx"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("1_k55fb")
+roughness_texture = SubResource("NoiseTexture2D_ko5ab")
 uv1_scale = Vector3(5, 1, 1)
 
 [resource]

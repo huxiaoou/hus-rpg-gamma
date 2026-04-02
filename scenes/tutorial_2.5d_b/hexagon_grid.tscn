@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b2djrslhplysw"]
+
+[ext_resource type="Script" uid="uid://dapg67dyuu0kc" path="res://scenes/tutorial_2.5d_b/map.gd" id="2_p34pu"]
+[ext_resource type="Script" uid="uid://tw1wfokfcmgl" path="res://scenes/tutorial_2.5d_b/camera_3d.gd" id="2_sgm28"]
+
+[node name="HexagonGrid" type="Node3D" unique_id=1935492225]
+
+[node name="Map" type="Node3D" parent="." unique_id=2144748877]
+script = ExtResource("2_p34pu")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=240226939]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1435852, 2.096821, 2.1135569)
+light_color = Color(0.48107743, 0.4654665, 0.45347142, 1)
+light_energy = 5.26
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1907756040]
+transform = Transform3D(1, 0, 0, 0, 0.17364822, 0.9848077, 0, -0.9848077, 0.17364822, 0, 10, 0)
+script = ExtResource("2_sgm28")

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://d0v5ll3h0rwmx"]
+
+[ext_resource type="Texture2D" uid="uid://c466bsldsi82t" path="res://scenes/tutorial_2.5d_b/assets/hexOcean03.png" id="1_3hxy0"]
+[ext_resource type="Script" uid="uid://4etuqn3l1nkh" path="res://scenes/tutorial_2.5d_b/another_hexagon.gd" id="1_jlxty"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3hxy0"]
+albedo_texture = ExtResource("1_3hxy0")
+
+[node name="MeshHexagon" type="MeshInstance3D" unique_id=174747447]
+material_override = SubResource("StandardMaterial3D_3hxy0")
+script = ExtResource("1_jlxty")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1871027247]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.98424923, 2.837361)

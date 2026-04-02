@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bva6bbfne6ek7"]
+
+[ext_resource type="Texture2D" uid="uid://b30qyhbr0qwse" path="res://scenes/tutorial_2.5d_b/assets/Brick_16-512x512.png" id="1_xfhyl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4aiy"]
+albedo_texture = ExtResource("1_xfhyl")
+ao_enabled = true
+uv1_scale = Vector3(2, 2, 2)
+uv1_offset = Vector3(0.1, 0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r78q7"]
+material = SubResource("StandardMaterial3D_h4aiy")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dn4dh"]
+size = Vector3(0.48929977, 0.5089035, 0.5071411)
+
+[node name="MeshInstance3D" type="MeshInstance3D" unique_id=981755726]
+mesh = SubResource("BoxMesh_r78q7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2058147982]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1714365995]
+shape = SubResource("BoxShape3D_dn4dh")
