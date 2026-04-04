@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bfa8evfiy8lua"
-path="res://.godot/imported/hexagon_highland.blend-00e5e3d3ff035524ef34044a58674a5a.scn"
+path="res://.godot/imported/hexagon_highland.blend-b4435675c15ffb6d4654f33e79bfd91a.scn"
 
 [deps]
 
-source_file="res://scenes/tutorial_2.5d_b/assets/hexagon_highland.blend"
-dest_files=["res://.godot/imported/hexagon_highland.blend-00e5e3d3ff035524ef34044a58674a5a.scn"]
+source_file="res://scenes/tutorial_2.5d_b/hexagon_highland.blend"
+dest_files=["res://.godot/imported/hexagon_highland.blend-b4435675c15ffb6d4654f33e79bfd91a.scn"]
 
 [params]
 

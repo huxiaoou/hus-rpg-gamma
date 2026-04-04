@@ -15,8 +15,8 @@ func _ready() -> void:
         mesh.bottom_radius = radius
         mesh.height = height
         mesh.radial_segments = 6
-        
-        var mat:StandardMaterial3D = get_active_material(0)
+
+        var mat: StandardMaterial3D = get_active_material(0)
         mat.albedo_texture = tex
         mat.uv1_scale = uv1_scale
         mat.uv1_offset = uv1_offset

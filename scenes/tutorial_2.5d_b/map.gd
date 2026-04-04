@@ -11,11 +11,12 @@ var scene_hexagon_sea: PackedScene = preload("res://scenes/tutorial_2.5d_b/hexag
 var scene_hexagon_highland: PackedScene = preload("res://scenes/tutorial_2.5d_b/hexagon_tile_highland.tscn")
 var scene_hexagon_plain: PackedScene = preload("res://scenes/tutorial_2.5d_b/hexagon_tile_plain.tscn")
 
-var scene_hexagon_sea2: PackedScene = preload("res://scenes/tutorial_2.5d_b/assets/hexagon.blend")
-var scene_hexagon_highland2: PackedScene = preload("res://scenes/tutorial_2.5d_b/assets/hexagon_highland.blend")
-var scene_hexagon_plain2: PackedScene = preload("res://scenes/tutorial_2.5d_b/assets/hexagon_plain.blend")
+var scene_hexagon_sea2: PackedScene = preload("res://scenes/tutorial_2.5d_b/hexagon.blend")
+var scene_hexagon_highland2: PackedScene = preload("res://scenes/tutorial_2.5d_b/hexagon_highland.blend")
+var scene_hexagon_plain2: PackedScene = preload("res://scenes/tutorial_2.5d_b/hexagon_plain.blend")
 
 var scenes_array: Array[PackedScene]
+
 
 func _ready() -> void:
     #scenes_array.append(scene_hexagon_sea)
@@ -25,13 +26,12 @@ func _ready() -> void:
     scenes_array.append(scene_hexagon_highland2)
     scenes_array.append(scene_hexagon_plain2)
     generate_hex_test()
-    
 
 
 func generate_hex_test() -> void:
     for x: int in total:
         for z: int in total:
-            var hex = scenes_array[randi()% scenes_array.size()].instantiate()
+            var hex = scenes_array[randi() % scenes_array.size()].instantiate()
             add_child(hex)
             if z % 2 == 0:
                 hex.global_position = Vector3(x * w, 0, h * z)

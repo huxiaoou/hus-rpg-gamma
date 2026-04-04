@@ -6,10 +6,10 @@ class_name MeshHexagon
 func _ready():
     var st = SurfaceTool.new()
     st.begin(Mesh.PRIMITIVE_TRIANGLES)
-    
+
     var radius = 1.0
     var center = Vector3.ZERO
-    
+
     # 1. Define the 6 outer vertices
     var vertices = []
     for i in range(6):
@@ -28,11 +28,11 @@ func _ready():
         # Add Center Point
         st.set_uv(uv_center)
         st.add_vertex(center)
-        
+
         # Add current vertex
         st.set_uv(uv1)
         st.add_vertex(vertices[i])
-        
+
         # Add next vertex
         st.set_uv(uv2)
         st.add_vertex(vertices[(i + 1) % 6])

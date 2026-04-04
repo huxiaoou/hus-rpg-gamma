@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://db2q8wkv4bq3y"
-path="res://.godot/imported/hexagon.blend-7c18ec9f55c3945137ac683e7b3aa94f.scn"
+uid="uid://bfifjcug5s8gu"
+path="res://.godot/imported/hexagon_plain.blend-de70742ba9a53c7c269d09844a6ff54a.scn"
 
 [deps]
 
-source_file="res://scenes/tutorial_2.5d_b/assets/hexagon.blend"
-dest_files=["res://.godot/imported/hexagon.blend-7c18ec9f55c3945137ac683e7b3aa94f.scn"]
+source_file="res://scenes/tutorial_2.5d_b/hexagon_plain.blend"
+dest_files=["res://.godot/imported/hexagon_plain.blend-de70742ba9a53c7c269d09844a6ff54a.scn"]
 
 [params]
 
