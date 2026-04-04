@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bva6bbfne6ek7" path="res://scenes/tutorial_2.5d_b/test_box.tscn" id="5_uj3wc"]
 [ext_resource type="PackedScene" uid="uid://cx1x3bs3w15xq" path="res://scenes/tutorial_2.5d_b/hexagon_tile_highland.tscn" id="7_x71lt"]
 [ext_resource type="PackedScene" uid="uid://d0v5ll3h0rwmx" path="res://scenes/tutorial_2.5d_b/another_hexagon.tscn" id="8_6v5tn"]
+[ext_resource type="PackedScene" uid="uid://db2q8wkv4bq3y" path="res://scenes/tutorial_2.5d_b/assets/hexagon.blend" id="9_sf76e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r78q7"]
 albedo_texture = ExtResource("2_6x0u0")
@@ -42,14 +43,13 @@ background_mode = 2
 sky = SubResource("Sky_uj3wc")
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_dn4dh"]
-dof_blur_far_enabled = true
 dof_blur_far_distance = 8.0
 dof_blur_near_enabled = true
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_6v5tn"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_sf76e"]
 _surfaces = [{
 "aabb": AABB(-0.8660254, 0, -1, 1.7320508, 1e-05, 2),
-"attribute_data": PackedByteArray("AAAAPwAAAD/s2W4/AACAPuzZbj8AAEA/AAAAPwAAAD/s2W4/AABAPwAAAD8AAIA/AAAAPwAAAD8AAAA/AACAP6QwiT0AAEA/AAAAPwAAAD+kMIk9AABAP6QwiT0AAIA+AAAAPwAAAD+kMIk9AACAPgAAAD8AAAAAAAAAPwAAAD8AAAA/AAAAAOzZbj8AAIA+"),
+"attribute_data": PackedByteArray("AAAAPwAAAD/s2W4/ZmbmPuzZbj8zM3M/AAAAPwAAAD/s2W4/MzNzPwAAAD+amZk/AAAAPwAAAD8AAAA/mpmZP6QwiT0zM3M/AAAAPwAAAD+kMIk9MzNzP6QwiT1mZuY+AAAAPwAAAD+kMIk9ZmbmPgAAAD/NzEw+AAAAPwAAAD8AAAA/zcxMPuzZbj9mZuY+"),
 "format": 34359738391,
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -595,6 +595,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44605094, 0)
 
 [node name="MeshHexagon" parent="." unique_id=174747447 instance=ExtResource("8_6v5tn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5327394, 0.34359217, -1.2688392)
-mesh = SubResource("ArrayMesh_6v5tn")
+mesh = SubResource("ArrayMesh_sf76e")
+
+[node name="hexagon" parent="." unique_id=1115182209 instance=ExtResource("9_sf76e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.801, 0.1, -1.314)
+
+[node name="hexagon2" parent="." unique_id=1939412686 instance=ExtResource("9_sf76e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9378757, 0.1, -0.5597103)
+
+[node name="-" parent="hexagon2" index="0" unique_id=1128934550]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4303236, 0, 5.9604645e-08)
 
 [editable path="Player"]
+[editable path="hexagon"]
+[editable path="hexagon2"]
