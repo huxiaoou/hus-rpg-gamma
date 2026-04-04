@@ -14,11 +14,15 @@ sky_material = SubResource("ProceduralSkyMaterial_p34pu")
 
 [sub_resource type="Environment" id="Environment_sgm28"]
 background_mode = 2
+background_energy_multiplier = 2.0
 sky = SubResource("Sky_uj3wc")
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_pfxrh"]
+dof_blur_far_enabled = true
 dof_blur_far_distance = 8.0
-dof_blur_near_enabled = true
+dof_blur_far_transition = 2.0
+dof_blur_near_distance = 4.0
+dof_blur_near_transition = 2.0
 
 [node name="HexagonGrid" type="Node3D" unique_id=1935492225]
 
@@ -26,15 +30,19 @@ dof_blur_near_enabled = true
 script = ExtResource("2_p34pu")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1907756040]
-transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 5.34089, 5.400776, 5.7658157)
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 9.704822, 4.582, 7.587633)
 keep_aspect = 0
 fov = 90.0
 script = ExtResource("2_sgm28")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Camera3D" unique_id=240226939]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.42198324, -2.3931844)
-light_energy = 3.0
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2083189886]
 environment = SubResource("Environment_sgm28")
 camera_attributes = SubResource("CameraAttributesPractical_pfxrh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1654629414]
+transform = Transform3D(1, 0, 0, 0, 0.6601328, 0.75114894, 0, -0.75114894, 0.6601328, 0, 0.7359204, 2.5573235)
+shadow_enabled = true
