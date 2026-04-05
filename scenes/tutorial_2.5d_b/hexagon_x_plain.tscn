@@ -1,13 +1,9 @@
 [gd_scene format=3 uid="uid://juqqgmx0pi52"]
 
-[ext_resource type="PackedScene" uid="uid://pbqh3tcc3v8i" path="res://scenes/tutorial_2.5d_b/hexagon.glb" id="1_cl58p"]
+[ext_resource type="PackedScene" uid="uid://cljpy8sjwkt31" path="res://scenes/tutorial_2.5d_b/hexagon_x_plain.glb" id="1_jq5h5"]
 [ext_resource type="Script" uid="uid://dpkjmefk7c70b" path="res://scenes/tutorial_2.5d_b/hexagon_x.gd" id="2_bhira"]
 [ext_resource type="Texture2D" uid="uid://bnpwp4kbx2048" path="res://scenes/tutorial_2.5d_b/assets/hexPlains00.png" id="3_cl58p"]
-[ext_resource type="Script" uid="uid://dd22j7obessb5" path="res://scenes/tutorial_2.5d_b/hexagon_x_tile.gd" id="4_0rylo"]
 
-[node name="hexagon" unique_id=1141195188 instance=ExtResource("1_cl58p")]
+[node name="hexagon_x_plain" unique_id=1893053347 instance=ExtResource("1_jq5h5")]
 script = ExtResource("2_bhira")
 tex = ExtResource("3_cl58p")
-
-[node name="-" parent="." index="0" unique_id=287577914]
-script = ExtResource("4_0rylo")

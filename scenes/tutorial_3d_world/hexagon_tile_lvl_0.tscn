@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bsk8cdauosoit"]
+
+[ext_resource type="PackedScene" uid="uid://5jdb3xs254gb" path="res://scenes/tutorial_3d_world/glbs/hexagon_tile_lvl0.glb" id="1_pa2ut"]
+
+[node name="hexagon_tile_lvl0" unique_id=219779450 instance=ExtResource("1_pa2ut")]

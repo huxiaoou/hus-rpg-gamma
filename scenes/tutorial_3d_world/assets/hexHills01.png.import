@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyhcxp5p411kk"
-path.s3tc="res://.godot/imported/hexagon_hexOcean03.png-c70553d5e39484da3f053a5af27616b3.s3tc.ctex"
+uid="uid://b02tk02ojvc1q"
+path.s3tc="res://.godot/imported/hexHills01.png-3b112a0ab024b0f5b289cd2bc604e9ef.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "385bf695b343f2f9eeb1a2f63bcdea87"
-}
 
 [deps]
 
-source_file="res://scenes/tutorial_2.5d_b/hexagon_hexOcean03.png"
-dest_files=["res://.godot/imported/hexagon_hexOcean03.png-c70553d5e39484da3f053a5af27616b3.s3tc.ctex"]
+source_file="res://scenes/tutorial_3d_world/assets/hexHills01.png"
+dest_files=["res://.godot/imported/hexHills01.png-3b112a0ab024b0f5b289cd2bc604e9ef.s3tc.ctex"]
 
 [params]
 

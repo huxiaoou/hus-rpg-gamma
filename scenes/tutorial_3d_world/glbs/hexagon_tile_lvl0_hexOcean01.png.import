@@ -2,21 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn7yf6dtd5a1p"
-path.s3tc="res://.godot/imported/SampleCharacter_Profile_1.png-5d235796d0b837d5887a98c5e52a33e1.s3tc.ctex"
+uid="uid://cm708so7ajph1"
+path="res://.godot/imported/hexagon_tile_lvl0_hexOcean01.png-25a0b5852cbf08fc7d63a786ce5de28a.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
+}
+generator_parameters={
+"md5": "67938511fa0695aa81c0550d1b321f44"
 }
 
 [deps]
 
-source_file="res://assets/SampleCharacter_Profile_1.png"
-dest_files=["res://.godot/imported/SampleCharacter_Profile_1.png-5d235796d0b837d5887a98c5e52a33e1.s3tc.ctex"]
+source_file="res://scenes/tutorial_3d_world/glbs/hexagon_tile_lvl0_hexOcean01.png"
+dest_files=["res://.godot/imported/hexagon_tile_lvl0_hexOcean01.png-25a0b5852cbf08fc7d63a786ce5de28a.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

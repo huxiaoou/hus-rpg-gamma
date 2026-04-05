@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bumarxiiebtwm"
-path.s3tc="res://.godot/imported/hexagon_Metal_17-512x512.png-bad17c4959d35ea735d6d0c680d118a2.s3tc.ctex"
+uid="uid://7cgwoa73mn5h"
+path.s3tc="res://.godot/imported/hexHighlands00.png-ec7335bda8435495afea949d6c4006fb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "4e6bd928d0cf4da7cfde617733b860b9"
-}
 
 [deps]
 
-source_file="res://scenes/tutorial_2.5d_b/hexagon_Metal_17-512x512.png"
-dest_files=["res://.godot/imported/hexagon_Metal_17-512x512.png-bad17c4959d35ea735d6d0c680d118a2.s3tc.ctex"]
+source_file="res://scenes/tutorial_3d_world/assets/hexHighlands00.png"
+dest_files=["res://.godot/imported/hexHighlands00.png-ec7335bda8435495afea949d6c4006fb.s3tc.ctex"]
 
 [params]
 

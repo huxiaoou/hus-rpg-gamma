@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsmhijq4ckyvc"
-path.s3tc="res://.godot/imported/hexagon_hexOcean03.png-ddd90c6bb0b20a4aba71311ffd69a685.s3tc.ctex"
+uid="uid://bm4d5hdog1ilj"
+path.s3tc="res://.godot/imported/hexHighlands01.png-a819167804285de3f63fcc7a5f527fbe.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "385bf695b343f2f9eeb1a2f63bcdea87"
-}
 
 [deps]
 
-source_file="res://scenes/tutorial_2.5d_b/assets/hexagon_hexOcean03.png"
-dest_files=["res://.godot/imported/hexagon_hexOcean03.png-ddd90c6bb0b20a4aba71311ffd69a685.s3tc.ctex"]
+source_file="res://scenes/tutorial_3d_world/assets/hexHighlands01.png"
+dest_files=["res://.godot/imported/hexHighlands01.png-a819167804285de3f63fcc7a5f527fbe.s3tc.ctex"]
 
 [params]
 

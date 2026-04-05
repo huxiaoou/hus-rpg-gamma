@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://b0r62e2yf1ood"]
+
+[ext_resource type="MeshLibrary" uid="uid://b2fko0g8ce8wq" path="res://scenes/tutorial_3d_world/my_tiles.meshlib" id="1_tb2h7"]
+[ext_resource type="Script" uid="uid://tw1wfokfcmgl" path="res://scenes/tutorial_2.5d_b/camera_3d.gd" id="2_hsw6o"]
+[ext_resource type="Script" uid="uid://c3g0a20ib6jvr" path="res://scenes/tutorial_3d_world/character_body_3d.gd" id="3_yuh2r"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yuh2r"]
+radius = 0.1
+height = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hsw6o"]
+radius = 0.2758789
+height = 0.5517578
+
+[node name="Main3Dworld" type="Node3D" unique_id=691474810]
+
+[node name="GridMap" type="GridMap" parent="." unique_id=1747154716]
+mesh_library = ExtResource("1_tb2h7")
+cell_size = Vector3(0.867, 0.2, 1)
+data = {
+"cells": PackedInt32Array(0, 0, 0, 1, 0, 1, 2, 0, 4, 3, 0, 5, 0, 1, 2, 1, 1, 3, 2, 1, 7, 3, 1, 6, 0, 2, 524289, 1, 2, 524289, 2, 2, 524289, 3, 2, 524289, 0, 3, 524289, 2, 3, 524289, 1, 3, 524289, 0, 4, 524289, 1, 4, 524289, 2, 4, 524289, 3, 3, 655361, 4, 2, 655361, 4, 1, 655364, 4, 0, 655364, 5, 1, 655365, 5, 0, 655365, 5, 2, 655363, 4, 3, 655363, 5, 3, 655367, 6, 0, 655367, 6, 1, 655366, 3, 4, 655366, 4, 4, 655367, 5, 4, 655367, 65542, 2, 655367, 65542, 3, 655367, 65540, 3, 655367, 65543, 1, 655367, 65542, 4, 7, 65540, 5, 7)
+}
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1552087621]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 1.7433178, 2.54357, 5.190053)
+script = ExtResource("2_hsw6o")
+xlim = Vector2(2, 78)
+zlim = Vector2(2, 72)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1447985484]
+transform = Transform3D(1, 0, 0, 0, -0.9231028, 0.38455316, 0, -0.38455316, -0.9231028, 2.7187889, 1.9901049, -2.813465)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=553907548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40037674, 0.5894233, 0.5771868)
+script = ExtResource("3_yuh2r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1958402719]
+mesh = SubResource("CapsuleMesh_yuh2r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=434721458]
+shape = SubResource("CapsuleShape3D_hsw6o")
