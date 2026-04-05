@@ -20,7 +20,7 @@ sky = SubResource("Sky_uj3wc")
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_pfxrh"]
 dof_blur_far_enabled = true
 dof_blur_far_distance = 8.0
-dof_blur_far_transition = 2.0
+dof_blur_far_transition = 4.0
 dof_blur_near_distance = 4.0
 dof_blur_near_transition = 2.0
 
@@ -38,6 +38,7 @@ transform = Transform3D(1, 0, 0, 0, 0.6601328, 0.75114894, 0, -0.75114894, 0.660
 shadow_enabled = true
 
 [node name="TestCamera" type="Camera3D" parent="." unique_id=1710382881]
-transform = Transform3D(1, 0, 0, 0, 0.17364822, 0.9848077, 0, -0.9848077, 0.17364822, 6.253, 3, 3.97)
+transform = Transform3D(1, 0, 0, 0, 0.9848077, 0.17364818, 0, -0.17364818, 0.9848077, 10.24802, 1.4506207, 11.28618)
+keep_aspect = 0
 script = ExtResource("2_sgm28")
 metadata/_custom_type_script = "uid://tw1wfokfcmgl"
