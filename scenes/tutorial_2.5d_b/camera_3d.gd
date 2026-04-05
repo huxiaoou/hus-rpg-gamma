@@ -28,5 +28,7 @@ func _process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
     if event.is_action_pressed("camera_up"):
         global_position += Vector3(0, zoom_step, 0)
+        #fov -= 2
     elif event.is_action_pressed("camera_down"):
         global_position -= Vector3(0, zoom_step, 0)
+        #fov += 2

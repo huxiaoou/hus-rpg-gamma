@@ -15,6 +15,10 @@ var scene_hexagon_sea2: PackedScene = preload("res://scenes/tutorial_2.5d_b/hexa
 var scene_hexagon_highland2: PackedScene = preload("res://scenes/tutorial_2.5d_b/hexagon_highland.blend")
 var scene_hexagon_plain2: PackedScene = preload("res://scenes/tutorial_2.5d_b/hexagon_plain.blend")
 
+var scene_hexagon_sea3: PackedScene = preload("res://scenes/tutorial_2.5d_b/hexagon_x.tscn")
+var scene_hexagon_highland3: PackedScene = preload("res://scenes/tutorial_2.5d_b/hexagon_x_highland.tscn")
+var scene_hexagon_plain3: PackedScene = preload("res://scenes/tutorial_2.5d_b/hexagon_x_plain.tscn")
+
 var scenes_array: Array[PackedScene]
 
 
@@ -22,9 +26,14 @@ func _ready() -> void:
     #scenes_array.append(scene_hexagon_sea)
     #scenes_array.append(scene_hexagon_highland)
     #scenes_array.append(scene_hexagon_plain)
-    scenes_array.append(scene_hexagon_sea2)
-    scenes_array.append(scene_hexagon_highland2)
-    scenes_array.append(scene_hexagon_plain2)
+    
+    #scenes_array.append(scene_hexagon_sea2)
+    #scenes_array.append(scene_hexagon_highland2)
+    #scenes_array.append(scene_hexagon_plain2)
+    
+    scenes_array.append(scene_hexagon_sea3)
+    scenes_array.append(scene_hexagon_highland3)
+    scenes_array.append(scene_hexagon_plain3)
     generate_hex_test()
 
 
