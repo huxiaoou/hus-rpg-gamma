@@ -23,6 +23,12 @@ window/size/window_height_override=1080
 window/energy_saving/keep_screen_on=false
 window/stretch/mode="canvas_items"
 
+[file_customization]
+
+folder_colors={
+"res://scenes/tutorial_3d_hex_grid/": "orange"
+}
+
 [input]
 
 move_left={

@@ -8,7 +8,7 @@ var h: float = 1.5 * size #- 0.01
 var offset: float = 0.50 * w
 
 
-var meshlib: MeshLibrary = preload("res://scenes/tutorial_3d_world/my_tiles.meshlib")
+var meshlib: MeshLibrary = preload("res://scenes/tutorial_3d_hex_grid/hexagon_tiles_with_border2.meshlib")
 var scenes_array: Array[PackedScene]
 
 

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dvnyyubb06gn7"]
+
+[ext_resource type="PackedScene" uid="uid://dsdv4waq5x63k" path="res://scenes/tutorial_3d_hex_grid/glbs/hexagon_tiles_with_border.glb" id="1_am3p1"]
+
+[node name="hexagon_tiles_with_border" unique_id=1698272115 instance=ExtResource("1_am3p1")]
