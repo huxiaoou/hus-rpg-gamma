@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ck6alnn1fiery"
-path="res://.godot/imported/hexagon_tiles_with_border.blend-53a0bb83ac8f26802bc2eea7ad2c24b3.scn"
+path="res://.godot/imported/hexagon_tiles_with_border.blend-86e429be34f16cc5613bade1f9bed3df.scn"
 
 [deps]
 
-source_file="res://scenes/tutorial_3d_hex_grid/hexagon_tiles_with_border.blend"
-dest_files=["res://.godot/imported/hexagon_tiles_with_border.blend-53a0bb83ac8f26802bc2eea7ad2c24b3.scn"]
+source_file="res://scenes/tutorial_3d_hex_grid/blends/hexagon_tiles_with_border.blend"
+dest_files=["res://.godot/imported/hexagon_tiles_with_border.blend-86e429be34f16cc5613bade1f9bed3df.scn"]
 
 [params]
 

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://7u7ky8lrywo8"]
+
+[ext_resource type="Script" uid="uid://dscvujmat1fm1" path="res://scenes/tutorial_3d_hex_grid/hextiles/hextile.gd" id="1_jkhsg"]
+[ext_resource type="Texture2D" uid="uid://cwgtvnoq2veue" path="res://scenes/tutorial_3d_hex_grid/assets/hexScrublands01.png" id="2_jkhsg"]
+
+[node name="Hextile" type="MeshInstance3D" unique_id=899157793]
+script = ExtResource("1_jkhsg")
+tile_tex = ExtResource("2_jkhsg")

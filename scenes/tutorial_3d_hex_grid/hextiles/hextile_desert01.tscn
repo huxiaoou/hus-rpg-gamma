@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://d114yqiik6hye"]
+
+[ext_resource type="Script" uid="uid://dscvujmat1fm1" path="res://scenes/tutorial_3d_hex_grid/hextiles/hextile.gd" id="1_cb845"]
+[ext_resource type="Texture2D" uid="uid://1do10fde3kb0" path="res://scenes/tutorial_3d_hex_grid/assets/hexDesertDunes01.png" id="2_cb845"]
+
+[node name="Hextile" type="MeshInstance3D" unique_id=899157793]
+script = ExtResource("1_cb845")
+tile_tex = ExtResource("2_cb845")
