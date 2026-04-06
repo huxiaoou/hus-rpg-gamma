@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://8umkoihxd5s6"]
+
+[ext_resource type="Script" uid="uid://c3g0a20ib6jvr" path="res://scenes/tutorial_3d_world/character_body_3d.gd" id="1_isg57"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_isg57"]
+albedo_color = Color(0.62144834, 0.39330605, 0.07242381, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yuh2r"]
+material = SubResource("StandardMaterial3D_isg57")
+radius = 0.1
+height = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hsw6o"]
+radius = 0.2758789
+height = 0.5517578
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=726636446]
+script = ExtResource("1_isg57")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=785586490]
+mesh = SubResource("CapsuleMesh_yuh2r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=938217844]
+shape = SubResource("CapsuleShape3D_hsw6o")

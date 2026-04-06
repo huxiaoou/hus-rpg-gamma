@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d2de68xu6ukq5"]
+
+[ext_resource type="Script" uid="uid://7hkhljrbjg7s" path="res://scenes/tutorial_3d_hex_grid/map_generator.gd" id="1_s14mm"]
+
+[node name="MapGenerator" type="Node3D" unique_id=1109090891]
+script = ExtResource("1_s14mm")

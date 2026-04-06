@@ -1,6 +1,6 @@
 extends Camera3D
 
-class_name TestCamera
+class_name CameraWorld
 
 @export var speed: float = 6
 @export var rotation_speed: float = PI / 6

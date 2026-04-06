@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://8x15tyfcv35e"]
+
+[ext_resource type="Script" uid="uid://tw1wfokfcmgl" path="res://scenes/tutorial_2.5d_b/camera_3d.gd" id="1_6t0ap"]
+
+[node name="CameraWorld" type="Camera3D" unique_id=1982494474]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
+keep_aspect = 0
+fov = 90.0
+script = ExtResource("1_6t0ap")

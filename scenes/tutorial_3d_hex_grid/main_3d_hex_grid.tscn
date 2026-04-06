@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dlw1w54avtm4m"]
+
+[ext_resource type="PackedScene" uid="uid://d2de68xu6ukq5" path="res://scenes/tutorial_3d_hex_grid/map_generator.tscn" id="1_xwro2"]
+[ext_resource type="PackedScene" uid="uid://8x15tyfcv35e" path="res://scenes/tutorial_3d_hex_grid/camera_world.tscn" id="2_xwro2"]
+[ext_resource type="PackedScene" uid="uid://8umkoihxd5s6" path="res://scenes/tutorial_3d_hex_grid/character_body_3d.tscn" id="3_xwro2"]
+
+[node name="Main3dHexGrid" type="Node3D" unique_id=356024358]
+
+[node name="MapGenerator" parent="." unique_id=1109090891 instance=ExtResource("1_xwro2")]
+
+[node name="CameraWorld" parent="." unique_id=1982494474 instance=ExtResource("2_xwro2")]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 5.642037, 2.8197703, 9.136234)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=909244906]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 9, 8, 22)
+shadow_enabled = true
+
+[node name="CharacterBody3D" parent="." unique_id=726636446 instance=ExtResource("3_xwro2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.008972, 0.45843506, 4.196045)
