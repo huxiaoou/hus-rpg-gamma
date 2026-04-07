@@ -1,8 +1,141 @@
-[gd_scene format=3 uid="uid://b0gmsnepyq2cg"]
+[gd_scene format=4 uid="uid://b0gmsnepyq2cg"]
 
 [ext_resource type="Script" uid="uid://dscvujmat1fm1" path="res://scenes/tutorial_3d_hex_grid/hextiles/hextile.gd" id="1_5h0bu"]
+[ext_resource type="Texture2D" uid="uid://0d6hyvk24s6p" path="res://scenes/tutorial_3d_hex_grid/blends/hexagon_tiles_with_border_hexOcean00.png" id="1_8xyjv"]
 [ext_resource type="Texture2D" uid="uid://djoq5pkagorx" path="res://scenes/tutorial_3d_hex_grid/assets/hexHills00.png" id="2_5h0bu"]
+[ext_resource type="Texture2D" uid="uid://osc5hhfsm7h0" path="res://scenes/tutorial_3d_hex_grid/blends/hexagon_tiles_with_border_Dirt_10-512x512.png.png" id="2_sv1nf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vrxq7"]
+resource_name = "Surface"
+cull_mode = 2
+albedo_texture = ExtResource("1_8xyjv")
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pqrvd"]
+resource_name = "Border"
+cull_mode = 2
+albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_guhqt"]
+resource_name = "BorderBlk"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1216x"]
+resource_name = "Bottom"
+cull_mode = 2
+albedo_texture = ExtResource("2_sv1nf")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_uwvat"]
+_surfaces = [{
+"aabb": AABB(-0.4330127, -0.1, -0.5, 0.8660254, 0.2, 1),
+"format": 34896613377,
+"index_count": 96,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAwAAAAQAAQADAAUABgAHAAcABgAGAAcACAAHAAYACQAHAAgACAAGAAoACQALAAcABwAHAAsABwALAAsADAALAAkACgAGAA0ADQAGAAYADQANAAYACgANAA4ADgANAA8ADwANAA0ADwAPAA0ADgAPABAAEAARAAwADAARAAsAEAAPABEAEQAPAA8AEQARAA8ACwARABEACwALABEAEgATABQAEwASABUAFQASABYAEwAVABcA"),
+"name": "Surface",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("LPT//xW6AAD/f///0gsAACz0///pRQAA0gv//xW6AAD/f///LPQAANIL///pRQAAAAD///+/AAD/f/////8AAP9///8V+gAAFfr//wq9AADpBf//Cr0AAP//////vwAAFfr///RCAAAAAP///z8AAOkF///0QgAA/3///wAAAAD/f///6QUAAP//////PwAAAAAAAP8/AAD//wAA/z8AAP9/AAAAAAAA/38AAP//AAAAAAAA/78AAP//AAD/vwAA")
+}, {
+"aabb": AABB(-0.41301268, 0.1, -0.476906, 0.82602537, 1e-05, 0.953812),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEAAgADAAUABgAEAAAABQADAAcABgAIAAQABQAHAAkACgAIAAYACQAHAAsACgALAAgACQALAAoA"),
+"name": "Border",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/38AAMz5AAAAAAAA/78AADIGAADlvAAAAAAAAP8/AAD/fwAA//8AADIGAAAZQwAAzPkAAOW8AAD/fwAAAAAAAP//AAD/vwAA/38AADIGAADM+QAAGUMAAP//AAD/PwAA")
+}, {
+"aabb": AABB(-0.4330127, 0.040000003, -0.5, 0.8660254, 0.06, 1),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIAAwAFAAEABAACAAYAAwAHAAUACAAEAAYABwAJAAUACAAGAAoABwALAAkACwAIAAoACwAKAAkA"),
+"name": "BorderBlk",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/38AAAAAAAD//////z8AAP9///8AAAAA//8AAP8/AAAAAAAA/z8AAP//////vwAAAAD///8/AAD//wAA/78AAAAAAAD/vwAA/3//////AAAAAP///78AAP9/AAD//wAA")
+}, {
+"aabb": AABB(-0.4330127, -0.1, -0.5, 0.8660254, 0.14, 1),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAAAAIAAwAFAAEABAACAAYAAwAHAAUACAAEAAYABwAJAAUACAAGAAoABwALAAkACwAIAAoACwAKAAkA"),
+"name": "Bottom",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("AAAAAP8/AAD/f///AAAAAAAA////PwAA/38AAAAAAAAAAAAA/78AAP//////PwAAAAD///+/AAD//wAA/z8AAP9/AAD//wAA//////+/AAD/f/////8AAP//AAD/vwAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bil1a"]
+resource_name = "hexagon_tiles_with_border_Cylinder_004"
+_surfaces = [{
+"aabb": AABB(-0.4330127, -0.1, -0.5, 0.8660254, 0.2, 1),
+"attribute_data": PackedByteArray("/P+q6v+/rqr8/wLAAoCq6v+///8CgALAqar/f/+//3//v/9/VNX/f6mq/39U1f9/VJX/f6nq/39Ulf9//3//f/9//3+p6v9/////f////39kxYLQmfqC0P/fLMH/34T+ZMUu75n6Lu//nxn9ZIUu75+Gee5khYLQ/5+E/p+GN9FfuXnu/58swZm6Lu//n5fCX7k30Zm6gtA="),
+"format": 34896613399,
+"index_count": 96,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMAAwAAAAQAAQADAAUABgAHAAgACAAHAAkABgAKAAcACAAJAAsADAAKAAYACwAJAA0ADAAOAAoADwAOAAwADwAQAA4ACwANABEAEQANABIAEQASABMAFAAVABYAFQAUABcAFwAUABgAFQAXABkAGgAbABwAHAAbAB0AGgAeABsAHAAdAB8AIAAeABoAHwAdACEAIAAiAB4AHwAhACMAJAAiACAAIwAhACUAJAAlACIAIwAlACQA"),
+"material": SubResource("StandardMaterial3D_vrxq7"),
+"name": "Surface",
+"primitive": 3,
+"uv_scale": Vector4(2, 2.003143, 0, 0),
+"vertex_count": 38,
+"vertex_data": PackedByteArray("LPT//xW6/7//f///0gv/vyz0///pRf+/0gv//xW6/7//f///LPT/v9IL///pRf+/AAD///+//7//f///////v/9///////+///////+//78AAP///7//v///////v/+/AAD///8//7///////z//vwAA////P/+//3///wAA/7//f///AAD/v///////P/+//3///wAA/7//f///AAD/vwAAAAD/P/8///8AAP8//z//fwAAAAD/P/9/AAD///8/AAAAAP+//z///wAA/7//P/9///8V+v+/AAD///+//7/pBf//Cr3/vwAA////P/+//3///////7/pBf//9EL/vxX6//8Kvf+//3///wAA/7///////7//v/9////pBf+/Ffr///RC/7///////z//v/7//3/+//9//v//f/7//3/+//9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/////f/7//3/+//9//v//f////3/+//9//v//f////3/+//9/////f/7//3/+//9/")
+}, {
+"aabb": AABB(-0.41301268, 0.1, -0.476906, 0.82602537, 1e-05, 0.953812),
+"attribute_data": PackedByteArray("/z/C9z8NTN20D+DbPw2yov8/mfq0Dx2kSnDg2/8/ZYW/ckzd/z87iEpwHaS/crKi"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEAAgADAAUABgAEAAAABQADAAcABgAIAAQABQAHAAkACgAIAAYACQAHAAsACgALAAgACQALAAoA"),
+"material": SubResource("StandardMaterial3D_pqrvd"),
+"name": "Border",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/38AAMz5/78AAAAA/7//vzIGAADlvP+/AAAAAP8//7//fwAA////vzIGAAAZQ/+/zPkAAOW8/7//fwAAAAD/v///AAD/v/+//38AADIG/7/M+QAAGUP/v///AAD/P/+/////f/7//3/+//9//v//f////3/+//9//v//f////3/+//9/////f/7//3/+//9/")
+}, {
+"aabb": AABB(-0.4330127, 0.040000003, -0.5, 0.8660254, 0.06, 1),
+"attribute_data": PackedByteArray("/////6nq/3////9/qer//6nq//9U1f9/qer/f1TV////v///qar/f/+//3+pqv//qar//1SV/3+pqv9/VJX//1SV////f/9/VJX/f/9///9U1f///7//f1TV/3//v///"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_guhqt"),
+"name": "BorderBlk",
+"primitive": 3,
+"uv_scale": Vector4(2, 0.29999995, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/38AAAAAqer//////z+p6v9///8AAKnq//8AAP8/qer//wAA/z//v///////v/+///////8//7///wAA/7//v/9/AAD//1SVAAD///+/VJX/f/////9UlQAAAAD/v1SVAAAAAP+//78AAP///z//vwAA////v/+/AAAAAP8//78AAAAA/z+p6v9///8AAKnqAAD///8/qer/fwAAAACp6v//AAD/v1SV/3//////VJX//////79Ulf9/AAD//1SV/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/f////3////9/////f////3////9/////f////3////9/////f////3////9/////fwAA/38AAP9/AAD/fwAA")
+}, {
+"aabb": AABB(-0.4330127, -0.1, -0.5, 0.8660254, 0.14, 1),
+"attribute_data": PackedByteArray("VJX///9/ZaZUlWWm/3///6mq//9UlWWmqaplplSV////v///qaplpv+/Zaapqv//qer//1TVZaap6mWmVNX///////+p6mWm//9lpqnq//9U1f///79lplTVZab/v///"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_1216x"),
+"name": "Bottom",
+"primitive": 3,
+"uv_scale": Vector4(2, 1, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP8/qer/f///AACp6gAA////P6nq/38AAAAAqeoAAAAA/7//vwAA////P/+/AAD///+//78AAAAA/z//v/9/AAD//1SVAAD///+/VJX/f/////9UlQAAAAD/v1SV//8AAP8//7///////7//v///////P/+///8AAP+//7//fwAAAACp6v//////P6nq/3///wAAqer//wAA/z+p6v//AAD/v1SV/3//////VJX//////79Ulf9/AAD//1SV/3////9/////f////3////9/////f////3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_uwvat")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8xyjv"]
+resource_name = "Surface"
+cull_mode = 2
+albedo_texture = ExtResource("2_5h0bu")
+roughness = 0.5
 
 [node name="Hextile" type="MeshInstance3D" unique_id=899157793]
+mesh = SubResource("ArrayMesh_bil1a")
+surface_material_override/0 = SubResource("StandardMaterial3D_8xyjv")
 script = ExtResource("1_5h0bu")
 tile_tex = ExtResource("2_5h0bu")
+mesh_name = "HexHigh"

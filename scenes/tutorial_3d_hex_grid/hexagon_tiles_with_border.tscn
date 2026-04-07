@@ -2,4 +2,4 @@
 
 [ext_resource type="PackedScene" uid="uid://ck6alnn1fiery" path="res://scenes/tutorial_3d_hex_grid/blends/hexagon_tiles_with_border.blend" id="1_am3p1"]
 
-[node name="hexagon_tiles_with_border" unique_id=2079246576 instance=ExtResource("1_am3p1")]
+[node name="hexagon_tiles_with_border" unique_id=1047236459 instance=ExtResource("1_am3p1")]

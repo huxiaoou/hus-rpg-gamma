@@ -5,17 +5,16 @@ class_name HexTile
 
 @export var tile_tex: Texture2D = null
 @export var meshlib: MeshLibrary = preload("res://scenes/tutorial_3d_hex_grid/meshlibs/hexagon_tiles_with_border.meshlib")
-
-const MESH_NAME: String = "HexLow"
+@export_enum("HexLow", "HexMid", "HexHigh") var mesh_name: String = "HexMid"
 
 
 func _ready() -> void:
-    var id: int = meshlib.find_item_by_name(MESH_NAME)
+    var id: int = meshlib.find_item_by_name(mesh_name)
     if id == -1:
-        print("Tile with name %s is not found in meshlib" % MESH_NAME)
+        print("Tile with name %s is not found in meshlib" % mesh_name)
         return
     mesh = meshlib.get_item_mesh(id)
-    transform = transform.rotated(Vector3i(0, 1, 0), -2 * PI / 3)
+    # transform = transform.rotated(Vector3i(0, 1, 0), -2 * PI / 3)
 
     # --- update texture
     var mat = get_active_material(0).duplicate() # Duplicate so we don't change other instances

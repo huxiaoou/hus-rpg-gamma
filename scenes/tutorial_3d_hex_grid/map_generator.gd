@@ -1,7 +1,7 @@
 @tool
 extends Node3D
 
-var total: int = 100
+var total: int = 20
 var size: float = 0.5
 var w: float = sqrt(3) * size # + 0.01
 var h: float = 1.5 * size #- 0.01

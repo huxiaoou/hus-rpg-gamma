@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="hus-rpg-gamma"
-run/main_scene="uid://b0r62e2yf1ood"
+run/main_scene="uid://dlw1w54avtm4m"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
 [display]
