@@ -12,7 +12,7 @@ class_name CameraWorld
 @export_group("Movement Boundry")
 @export var xlim: Vector2 = Vector2(-2, 72)
 @export var zlim: Vector2 = Vector2(-2, 72)
-@export var ylim: Vector2 = Vector2(2, 4)
+@export var ylim: Vector2 = Vector2(-1, 4)
 
 @onready var camera: Camera3D = $Camera
 

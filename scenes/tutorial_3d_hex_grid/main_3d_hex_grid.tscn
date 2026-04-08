@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://dlw1w54avtm4m"]
 
+[ext_resource type="Script" uid="uid://dyvyl1iapwrs2" path="res://scenes/tutorial_3d_hex_grid/main_3d_hex_grid.gd" id="1_counh"]
 [ext_resource type="PackedScene" uid="uid://d2de68xu6ukq5" path="res://scenes/tutorial_3d_hex_grid/map_generator.tscn" id="1_xwro2"]
 [ext_resource type="PackedScene" uid="uid://8x15tyfcv35e" path="res://scenes/tutorial_3d_hex_grid/camera_world.tscn" id="2_xwro2"]
 [ext_resource type="PackedScene" uid="uid://8umkoihxd5s6" path="res://scenes/tutorial_3d_hex_grid/character_body_3d.tscn" id="3_xwro2"]
 
 [node name="Main3dHexGrid" type="Node3D" unique_id=356024358]
+script = ExtResource("1_counh")
 
 [node name="MapGenerator" parent="." unique_id=1109090891 instance=ExtResource("1_xwro2")]
 
