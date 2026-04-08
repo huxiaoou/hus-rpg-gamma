@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b2djrslhplysw"]
 
 [ext_resource type="Script" uid="uid://dapg67dyuu0kc" path="res://scenes/tutorial_2.5d_b/map.gd" id="2_p34pu"]
-[ext_resource type="Script" uid="uid://tw1wfokfcmgl" path="res://scenes/tutorial_2.5d_b/camera_3d.gd" id="2_sgm28"]
+[ext_resource type="Script" uid="uid://tw1wfokfcmgl" path="res://scenes/tutorial_3d_hex_grid/camera_world.gd" id="2_sgm28"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p34pu"]
 sky_top_color = Color(0.29247028, 0.53364426, 0.7020721, 1)

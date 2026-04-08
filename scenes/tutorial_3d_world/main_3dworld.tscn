@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b0r62e2yf1ood"]
 
 [ext_resource type="MeshLibrary" uid="uid://b2fko0g8ce8wq" path="res://scenes/tutorial_3d_world/my_tiles.meshlib" id="1_tb2h7"]
-[ext_resource type="Script" uid="uid://tw1wfokfcmgl" path="res://scenes/tutorial_2.5d_b/camera_3d.gd" id="2_hsw6o"]
+[ext_resource type="Script" uid="uid://tw1wfokfcmgl" path="res://scenes/tutorial_3d_hex_grid/camera_world.gd" id="2_hsw6o"]
 [ext_resource type="PackedScene" uid="uid://8umkoihxd5s6" path="res://scenes/tutorial_3d_hex_grid/character_body_3d.tscn" id="3_yuh2r"]
 
 [node name="Main3Dworld" type="Node3D" unique_id=691474810]

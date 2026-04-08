@@ -8,11 +8,6 @@
 
 [node name="MapGenerator" parent="." unique_id=1109090891 instance=ExtResource("1_xwro2")]
 
-[node name="CameraWorld" parent="." unique_id=1982494474 instance=ExtResource("2_xwro2")]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 5.642037, 2.8197703, 9.136234)
-xlim = Vector2(-6, 18)
-zlim = Vector2(-6, 18)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=909244906]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 9, 8, 22)
 light_energy = 1.2
@@ -20,3 +15,5 @@ shadow_enabled = true
 
 [node name="CharacterBody3D" parent="." unique_id=726636446 instance=ExtResource("3_xwro2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.008972, 0.45843506, 4.196045)
+
+[node name="CameraWorld" parent="." unique_id=507607233 instance=ExtResource("2_xwro2")]
