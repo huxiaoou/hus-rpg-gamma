@@ -1,6 +1,52 @@
 [gd_scene format=3 uid="uid://d2de68xu6ukq5"]
 
 [ext_resource type="Script" uid="uid://7hkhljrbjg7s" path="res://scenes/tutorial_3d_hex_grid/map_generator.gd" id="1_s14mm"]
+[ext_resource type="Texture2D" uid="uid://brrgxqbyln5g2" path="res://scenes/tutorial_3d_hex_grid/assets/hex_grid_indicator.png" id="2_mk4nu"]
+
+[sub_resource type="Animation" id="Animation_dmftq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cursor:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mk4nu"]
+resource_name = "cursor_idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cursor:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.8, 0.8, 0.8), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dmftq"]
+_data = {
+&"RESET": SubResource("Animation_dmftq"),
+&"cursor_idle": SubResource("Animation_mk4nu")
+}
 
 [node name="MapGenerator" type="Node3D" unique_id=1109090891]
 script = ExtResource("1_s14mm")
+
+[node name="Cursor" type="Sprite3D" parent="." unique_id=1924817763]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+pixel_size = 0.001
+texture = ExtResource("2_mk4nu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=487398814]
+libraries/ = SubResource("AnimationLibrary_dmftq")
