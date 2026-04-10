@@ -64,12 +64,14 @@ func get_xz_projection() -> Vector3:
     var ray_origin: Vector3 = camera.project_ray_origin(mouse_pos)
     var ray_direction: Vector3 = camera.project_ray_normal(mouse_pos)
     var plane: Plane = Plane(Vector3.UP, xz_plane_y)
-    var intersection: Vector3 = plane.intersects_ray(ray_origin, ray_direction)
+    var intersection: Variant = plane.intersects_ray(ray_origin, ray_direction)
+    if intersection == null:
+        return Vector3.ZERO
     return intersection
 
 
 func point_to_hex_coordinates(point: Vector3) -> Vector2i:
-    var r: int = roundi(point.z * h)
+    var r: int = roundi(point.z / h)
     var q: int = roundi((point.x - offset * int(r % 2 != 0)) / w)
     return Vector2i(q, r)
 
