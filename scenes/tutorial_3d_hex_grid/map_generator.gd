@@ -49,6 +49,8 @@ func init_cursor() -> void:
 
 func _process(_delta: float) -> void:
     var active_point: Vector3 = get_xz_projection()
+    if active_point == Vector3.INF:
+        return
     var new_active_hex_coord: Vector2i = point_to_hex_coordinates(active_point)
     if new_active_hex_coord != active_hex_coord:
         active_hex_coord = new_active_hex_coord
@@ -59,14 +61,14 @@ func _process(_delta: float) -> void:
 func get_xz_projection() -> Vector3:
     var camera: Camera3D = get_viewport().get_camera_3d()
     if camera == null:
-        return Vector3.ZERO
+        return Vector3.INF
     var mouse_pos: Vector2 = get_viewport().get_mouse_position()
     var ray_origin: Vector3 = camera.project_ray_origin(mouse_pos)
     var ray_direction: Vector3 = camera.project_ray_normal(mouse_pos)
     var plane: Plane = Plane(Vector3.UP, xz_plane_y)
     var intersection: Variant = plane.intersects_ray(ray_origin, ray_direction)
     if intersection == null:
-        return Vector3.ZERO
+        return Vector3.INF
     return intersection
 
 
