@@ -3,6 +3,13 @@
 [ext_resource type="Script" uid="uid://7hkhljrbjg7s" path="res://scenes/tutorial_3d_hex_grid/map_generator.gd" id="1_s14mm"]
 [ext_resource type="Texture2D" uid="uid://brrgxqbyln5g2" path="res://scenes/tutorial_3d_hex_grid/assets/hex_grid_indicator.png" id="2_mk4nu"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mk4nu"]
+albedo_color = Color(0.78801334, 0.83852875, 0.99999815, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mk4nu"]
+material = SubResource("StandardMaterial3D_mk4nu")
+size = Vector2(50, 50)
+
 [sub_resource type="Animation" id="Animation_dmftq"]
 length = 0.001
 tracks/0/type = "value"
@@ -43,10 +50,13 @@ _data = {
 [node name="MapGenerator" type="Node3D" unique_id=1109090891]
 script = ExtResource("1_s14mm")
 
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=1695163834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+mesh = SubResource("PlaneMesh_mk4nu")
+
 [node name="Cursor" type="Sprite3D" parent="." unique_id=1924817763]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 pixel_size = 0.001
-billboard = 1
 texture = ExtResource("2_mk4nu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=487398814]

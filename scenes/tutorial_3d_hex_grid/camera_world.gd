@@ -10,9 +10,9 @@ class_name CameraWorld
 @export var zoom_step: float = 0.15
 
 @export_group("Movement Boundry")
-@export var xlim: Vector2 = Vector2(-2, 72)
-@export var zlim: Vector2 = Vector2(-2, 72)
-@export var ylim: Vector2 = Vector2(-1, 4)
+@export var xlim: Vector2 = Vector2(-20, 20)
+@export var zlim: Vector2 = Vector2(-20, 20)
+@export var ylim: Vector2 = Vector2(1, 3)
 
 @onready var camera: Camera3D = $Camera
 
