@@ -2,6 +2,7 @@ extends MeshInstance3D
 
 class_name HexTile
 
+@export var tile_name: String
 @export var tile_tex: Texture2D = null
 @export var meshlib: MeshLibrary = preload("res://scenes/tutorial_3d_hex_grid/meshlibs/hexagon_tiles_with_border.meshlib")
 @export_enum("HexLow", "HexMid", "HexHigh") var mesh_name: String = "HexMid"

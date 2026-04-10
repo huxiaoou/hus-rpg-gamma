@@ -21,6 +21,8 @@ class_name MapGenerator
     preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_scrublands01.tscn"),
 ]
 
+const SAVE_PATH = "user://map.tres"
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var cursor: Sprite3D = $Cursor
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
@@ -37,12 +39,47 @@ var offset: float = 0.50 * w
 var xz_plane_y: float = 0
 
 var active_hex_coord: Vector2i = Vector2i.ZERO
+@onready var manager_cells: Dictionary[Vector2i, HexTile] = { }
 @onready var map_data: DataMap = DataMap.new()
 
 
 func _ready() -> void:
     init_cursor()
+    load_map()
     # generate_hex_test()
+
+
+func save_map() -> void:
+    var error: int = ResourceSaver.save(map_data, SAVE_PATH)
+    if error != OK:
+        print("Error saving map: %s" % error)
+        aplay_notice()
+        return
+    print("Map saved successfully.")
+    aplay_confirm()
+    return
+
+
+func load_map() -> void:
+    if not ResourceLoader.exists(SAVE_PATH):
+        print("Error loading map: No resource found at %s" % SAVE_PATH)
+        aplay_notice()
+        return
+    var loaded_resource: Resource = ResourceLoader.load(SAVE_PATH, "DataMap")
+    if loaded_resource == null:
+        print("Error loading map: Resource not found at %s" % SAVE_PATH)
+        aplay_notice()
+        return
+    if not loaded_resource is DataMap:
+        print("Error loading map: Resource at %s is not of type DataMap" % SAVE_PATH)
+        aplay_notice()
+        return
+    map_data = loaded_resource as DataMap
+    # for cell in map_data.data.values():
+    #     add_hex_at_coord(cell.cell_loc)
+    print("Map loaded successfully.")
+    aplay_confirm()
+    return
 
 
 func aplay_confirm() -> void:
@@ -118,24 +155,25 @@ func add_hex_at_coord(hex_coords: Vector2i) -> void:
     var hex: HexTile = scenes_array[id].instantiate()
     add_child(hex)
     hex.global_position = hex_coordinates_to_point(hex_coords)
-    var data_map_cell: DataMap.DataMapCell = DataMap.DataMapCell.new()
+    var data_map_cell: DataMapCell = DataMapCell.new()
     data_map_cell.cell_loc = hex_coords
-    data_map_cell.hex_tile = hex
+    data_map_cell.tile_name = hex.tile_name
     map_data.data[hex_coords] = data_map_cell
+    manager_cells[hex_coords] = hex
+    print("Added cell at %s" % hex_coords)
     aplay_confirm()
     return
 
 
 func remove_hex_at_coord(hex_coords: Vector2i) -> void:
-    if not map_data.data.has(hex_coords):
+    if not manager_cells.has(hex_coords):
         print("Cell %s has no cell placed" % hex_coords)
         aplay_notice()
         return
-
-    var data_map_cell: DataMap.DataMapCell = map_data.data[hex_coords]
-    var hex: HexTile = data_map_cell.hex_tile
+    var hex: HexTile = manager_cells[hex_coords]
     if hex != null:
         hex.queue_free()
+    manager_cells.erase(hex_coords)
     map_data.data.erase(hex_coords)
     aplay_cancel()
     print("Removed cell at %s" % hex_coords)
@@ -147,6 +185,9 @@ func _unhandled_input(event: InputEvent) -> void:
         add_hex_at_coord(active_hex_coord)
     elif event.is_action_pressed("cancel_hex_placement"):
         remove_hex_at_coord(active_hex_coord)
+    elif event.is_action_pressed("save_game"):
+        save_map()
+    return
 
 
 func generate_hex_test() -> void:
