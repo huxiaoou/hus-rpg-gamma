@@ -51,3 +51,5 @@ texture = ExtResource("2_mk4nu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=487398814]
 libraries/ = SubResource("AnimationLibrary_dmftq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1885611105]

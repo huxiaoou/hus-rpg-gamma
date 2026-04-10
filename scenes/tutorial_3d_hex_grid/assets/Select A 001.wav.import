@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://8o7sj8boehps"
+path="res://.godot/imported/Select A 001.wav-dead7486d61585aeecc59c5e00d9550e.sample"
+
+[deps]
+
+source_file="res://scenes/tutorial_3d_hex_grid/assets/Select A 001.wav"
+dest_files=["res://.godot/imported/Select A 001.wav-dead7486d61585aeecc59c5e00d9550e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

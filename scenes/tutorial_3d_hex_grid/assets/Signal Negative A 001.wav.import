@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://big14d5jassxi"
+path="res://.godot/imported/Signal Negative A 001.wav-e5de15a041075716211f291886fb5206.sample"
+
+[deps]
+
+source_file="res://scenes/tutorial_3d_hex_grid/assets/Signal Negative A 001.wav"
+dest_files=["res://.godot/imported/Signal Negative A 001.wav-e5de15a041075716211f291886fb5206.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
