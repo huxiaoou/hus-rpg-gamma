@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://dcgdnosulqcym"]
+
+[ext_resource type="Script" uid="uid://dfj5d8nv8idhi" path="res://scenes/tutorial_3d_hex_grid/tiles_selector.gd" id="1_8wjhg"]
+[ext_resource type="PackedScene" uid="uid://bq7ge74o4t5jl" path="res://scenes/tutorial_3d_hex_grid/button_tile.tscn" id="1_der32"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_8wjhg"]
+device = -1
+keycode = 49
+unicode = 49
+
+[sub_resource type="Shortcut" id="Shortcut_s2gab"]
+resource_local_to_scene = true
+events = [SubResource("InputEventKey_8wjhg")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_s2gab"]
+device = -1
+keycode = 50
+unicode = 50
+
+[sub_resource type="Shortcut" id="Shortcut_qmtsm"]
+resource_local_to_scene = true
+events = [SubResource("InputEventKey_s2gab")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_qmtsm"]
+device = -1
+keycode = 51
+unicode = 51
+
+[sub_resource type="Shortcut" id="Shortcut_o7ef4"]
+resource_local_to_scene = true
+events = [SubResource("InputEventKey_qmtsm")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_o7ef4"]
+device = -1
+keycode = 52
+unicode = 52
+
+[sub_resource type="Shortcut" id="Shortcut_ga6tn"]
+resource_local_to_scene = true
+events = [SubResource("InputEventKey_o7ef4")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ga6tn"]
+device = -1
+keycode = 53
+unicode = 53
+
+[sub_resource type="Shortcut" id="Shortcut_2wh2c"]
+resource_local_to_scene = true
+events = [SubResource("InputEventKey_ga6tn")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_avy4p"]
+device = -1
+keycode = 54
+unicode = 54
+
+[sub_resource type="Shortcut" id="Shortcut_l4bwq"]
+resource_local_to_scene = true
+events = [SubResource("InputEventKey_avy4p")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_tgepa"]
+device = -1
+keycode = 55
+unicode = 55
+
+[sub_resource type="Shortcut" id="Shortcut_yxqsc"]
+resource_local_to_scene = true
+events = [SubResource("InputEventKey_tgepa")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_p8gq1"]
+device = -1
+keycode = 56
+unicode = 56
+
+[sub_resource type="Shortcut" id="Shortcut_1kdac"]
+resource_local_to_scene = true
+events = [SubResource("InputEventKey_p8gq1")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_e1scv"]
+device = -1
+keycode = 57
+unicode = 57
+
+[sub_resource type="Shortcut" id="Shortcut_vk701"]
+resource_local_to_scene = true
+events = [SubResource("InputEventKey_e1scv")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_thcbr"]
+device = -1
+keycode = 48
+unicode = 48
+
+[sub_resource type="Shortcut" id="Shortcut_2o48b"]
+resource_local_to_scene = true
+events = [SubResource("InputEventKey_thcbr")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_dmmbe"]
+device = -1
+keycode = 45
+unicode = 45
+
+[sub_resource type="Shortcut" id="Shortcut_dbahe"]
+resource_local_to_scene = true
+events = [SubResource("InputEventKey_dmmbe")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_dprb1"]
+device = -1
+keycode = 61
+unicode = 61
+
+[sub_resource type="Shortcut" id="Shortcut_4e8f0"]
+resource_local_to_scene = true
+events = [SubResource("InputEventKey_dprb1")]
+
+[node name="TilesSelector" type="MarginContainer" unique_id=384257839]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 16
+script = ExtResource("1_8wjhg")
+
+[node name="TilesContainer" type="HBoxContainer" parent="." unique_id=1132921714]
+custom_minimum_size = Vector2(256, 96)
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="ButtonTile01" parent="TilesContainer" unique_id=455204150 instance=ExtResource("1_der32")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_s2gab")
+
+[node name="ButtonTile02" parent="TilesContainer" unique_id=836762370 instance=ExtResource("1_der32")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_qmtsm")
+
+[node name="ButtonTile03" parent="TilesContainer" unique_id=1366496413 instance=ExtResource("1_der32")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_o7ef4")
+
+[node name="ButtonTile04" parent="TilesContainer" unique_id=2674257 instance=ExtResource("1_der32")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_ga6tn")
+
+[node name="ButtonTile05" parent="TilesContainer" unique_id=582970371 instance=ExtResource("1_der32")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_2wh2c")
+
+[node name="ButtonTile06" parent="TilesContainer" unique_id=453239548 instance=ExtResource("1_der32")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_l4bwq")
+
+[node name="ButtonTile07" parent="TilesContainer" unique_id=1498273539 instance=ExtResource("1_der32")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_yxqsc")
+
+[node name="ButtonTile08" parent="TilesContainer" unique_id=323771931 instance=ExtResource("1_der32")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_1kdac")
+
+[node name="ButtonTile09" parent="TilesContainer" unique_id=2033836851 instance=ExtResource("1_der32")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_vk701")
+
+[node name="ButtonTile10" parent="TilesContainer" unique_id=1455753251 instance=ExtResource("1_der32")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_2o48b")
+
+[node name="ButtonTile11" parent="TilesContainer" unique_id=1485824332 instance=ExtResource("1_der32")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_dbahe")
+
+[node name="ButtonTile12" parent="TilesContainer" unique_id=1180897000 instance=ExtResource("1_der32")]
+layout_mode = 2
+shortcut = SubResource("Shortcut_4e8f0")

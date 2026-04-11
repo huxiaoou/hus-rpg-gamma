@@ -1,4 +1,3 @@
-# @tool
 extends Node3D
 
 class_name MapGenerator
@@ -43,10 +42,12 @@ var active_hex_coord: Vector2i = Vector2i.ZERO
 @onready var manager_cells: Dictionary[Vector2i, HexTile] = { }
 @onready var map_data: DataMap = DataMap.new()
 
+@onready var tiles_selector: TilesSelector = $UI/TilesSelector
 
 func _ready() -> void:
     init_cursor()
     load_map()
+    tiles_selector.setup(scenes_database)
     # generate_hex_test()
 
 
