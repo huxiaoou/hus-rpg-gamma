@@ -75,8 +75,9 @@ func load_map() -> void:
         aplay_notice()
         return
     map_data = loaded_resource as DataMap
-    # for cell in map_data.data.values():
-    #     add_hex_at_coord(cell.cell_loc)
+    for cell: Vector2i in map_data.data:
+        var data_map_cell: DataMapCell = map_data.data[cell]
+        add_hex_at_coord(cell)
     print("Map loaded successfully.")
     aplay_confirm()
     return
@@ -146,7 +147,7 @@ func hex_coordinates_to_point(hex_coords: Vector2i) -> Vector3:
 
 
 func add_hex_at_coord(hex_coords: Vector2i) -> void:
-    if map_data.data.has(hex_coords):
+    if manager_cells.has(hex_coords):
         print("Cell %s already has cell placed" % hex_coords)
         aplay_notice()
         return

@@ -27,6 +27,4 @@ func _ready() -> void:
         collision_node.shape = shape_res
         collision_node.transform = shape_transform
         static_body.add_child(collision_node)
-
-func init_from_data() -> void:
-    _ready()
+    return
