@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://brrgxqbyln5g2" path="res://scenes/tutorial_3d_hex_grid/assets/hex_grid_indicator.png" id="2_mk4nu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mk4nu"]
-albedo_color = Color(0.78801334, 0.83852875, 0.99999815, 1)
+albedo_color = Color(0.08525088, 0.09032708, 0.096522324, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mk4nu"]
 material = SubResource("StandardMaterial3D_mk4nu")
