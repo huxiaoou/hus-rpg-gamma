@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://0d6hyvk24s6p" path="res://scenes/tutorial_3d_hex_grid/blends/hexagon_tiles_with_border_hexOcean00.png" id="1_ov0jc"]
 [ext_resource type="Texture2D" uid="uid://csevwch2gd5l8" path="res://scenes/tutorial_3d_hex_grid/assets/hexHills01.png" id="2_38lcs"]
 [ext_resource type="Texture2D" uid="uid://osc5hhfsm7h0" path="res://scenes/tutorial_3d_hex_grid/blends/hexagon_tiles_with_border_Dirt_10-512x512.png.png" id="2_gxvya"]
+[ext_resource type="Resource" uid="uid://bbsc62tsvk33v" path="res://scenes/tutorial_3d_hex_grid/resources/hextiles/hills01.tres" id="5_gxvya"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vrxq7"]
 resource_name = "Surface"
@@ -137,5 +138,4 @@ roughness = 0.5
 mesh = SubResource("ArrayMesh_bil1a")
 surface_material_override/0 = SubResource("StandardMaterial3D_ov0jc")
 script = ExtResource("1_38lcs")
-tile_tex = ExtResource("2_38lcs")
-mesh_name = "HexHigh"
+data = ExtResource("5_gxvya")

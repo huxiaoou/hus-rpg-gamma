@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bfhncjeslqalj"]
 
 [ext_resource type="Script" uid="uid://dscvujmat1fm1" path="res://scenes/tutorial_3d_hex_grid/hextiles/hextile.gd" id="1_y082x"]
-[ext_resource type="Texture2D" uid="uid://nej814ssaexd" path="res://scenes/tutorial_3d_hex_grid/assets/hexPlains00.png" id="2_y082x"]
+[ext_resource type="Resource" uid="uid://bsp3ag3gbt2lb" path="res://scenes/tutorial_3d_hex_grid/resources/hextiles/plains00.tres" id="2_y082x"]
 
 [node name="Hextile" type="MeshInstance3D" unique_id=899157793]
 script = ExtResource("1_y082x")
-tile_tex = ExtResource("2_y082x")
+data = ExtResource("2_y082x")

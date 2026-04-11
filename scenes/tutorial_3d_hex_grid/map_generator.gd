@@ -154,10 +154,11 @@ func add_hex_at_coord(hex_coords: Vector2i) -> void:
     var id: int = randi() % scenes_array.size()
     var hex: HexTile = scenes_array[id].instantiate()
     add_child(hex)
+    #hex.init_from_data()
     hex.global_position = hex_coordinates_to_point(hex_coords)
     var data_map_cell: DataMapCell = DataMapCell.new()
     data_map_cell.cell_loc = hex_coords
-    data_map_cell.tile_name = hex.tile_name
+    data_map_cell.tile_name = hex.data.tile_name
     map_data.data[hex_coords] = data_map_cell
     manager_cells[hex_coords] = hex
     print("Added cell at %s" % hex_coords)

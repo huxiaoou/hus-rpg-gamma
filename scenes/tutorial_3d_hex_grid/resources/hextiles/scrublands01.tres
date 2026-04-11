@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DataHexTile" format=3 uid="uid://c3mj7beg7ap3c"]
+
+[ext_resource type="MeshLibrary" uid="uid://0an54nyfc114" path="res://scenes/tutorial_3d_hex_grid/meshlibs/hexagon_tiles_with_border.meshlib" id="1_epsrr"]
+[ext_resource type="Script" uid="uid://dtupryyfyibai" path="res://scenes/tutorial_3d_hex_grid/resources/data_hex_tile.gd" id="2_tppx4"]
+[ext_resource type="Texture2D" uid="uid://cwgtvnoq2veue" path="res://scenes/tutorial_3d_hex_grid/assets/hexScrublands01.png" id="3_epsrr"]
+
+[resource]
+script = ExtResource("2_tppx4")
+tile_name = "scrublands01"
+tile_tex = ExtResource("3_epsrr")
+metadata/_custom_type_script = "uid://dtupryyfyibai"

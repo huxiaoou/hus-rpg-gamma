@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dscvujmat1fm1" path="res://scenes/tutorial_3d_hex_grid/hextiles/hextile.gd" id="1_tewkv"]
 [ext_resource type="Texture2D" uid="uid://ldwedwfkdexo" path="res://scenes/tutorial_3d_hex_grid/assets/hexOcean00.png" id="2_m51ai"]
 [ext_resource type="Texture2D" uid="uid://osc5hhfsm7h0" path="res://scenes/tutorial_3d_hex_grid/blends/hexagon_tiles_with_border_Dirt_10-512x512.png.png" id="2_qrr88"]
+[ext_resource type="Resource" uid="uid://v3ftqg5004s8" path="res://scenes/tutorial_3d_hex_grid/resources/hextiles/ocean00.tres" id="5_qrr88"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vrxq7"]
 resource_name = "Surface"
@@ -137,5 +138,4 @@ roughness = 0.5
 mesh = SubResource("ArrayMesh_84rbc")
 surface_material_override/0 = SubResource("StandardMaterial3D_qhkt8")
 script = ExtResource("1_tewkv")
-tile_tex = ExtResource("2_m51ai")
-mesh_name = "HexLow"
+data = ExtResource("5_qrr88")

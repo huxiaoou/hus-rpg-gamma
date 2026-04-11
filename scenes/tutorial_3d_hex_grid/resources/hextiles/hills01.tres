@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DataHexTile" format=3 uid="uid://bbsc62tsvk33v"]
+
+[ext_resource type="MeshLibrary" uid="uid://0an54nyfc114" path="res://scenes/tutorial_3d_hex_grid/meshlibs/hexagon_tiles_with_border.meshlib" id="1_ilwbd"]
+[ext_resource type="Script" uid="uid://dtupryyfyibai" path="res://scenes/tutorial_3d_hex_grid/resources/data_hex_tile.gd" id="2_1ilix"]
+[ext_resource type="Texture2D" uid="uid://csevwch2gd5l8" path="res://scenes/tutorial_3d_hex_grid/assets/hexHills01.png" id="3_ilwbd"]
+
+[resource]
+script = ExtResource("2_1ilix")
+tile_name = "hills01"
+tile_tex = ExtResource("3_ilwbd")
+metadata/_custom_type_script = "uid://dtupryyfyibai"
