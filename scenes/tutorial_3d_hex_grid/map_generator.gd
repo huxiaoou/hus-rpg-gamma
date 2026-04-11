@@ -44,11 +44,22 @@ var active_hex_coord: Vector2i = Vector2i.ZERO
 
 @onready var tiles_selector: TilesSelector = $UI/TilesSelector
 
+var active_scene_name: String = ""
+
+
 func _ready() -> void:
     init_cursor()
     load_map()
     tiles_selector.setup(scenes_database)
+    for button: ButtonTile in tiles_selector.get_buttons():
+        button.scene_selected.connect(on_tile_selected)
+    return
     # generate_hex_test()
+
+
+func on_tile_selected(scene_name: String) -> void:
+    active_scene_name = scene_name
+    return
 
 
 func save_map() -> void:
@@ -152,9 +163,10 @@ func add_hex_at_coord(hex_coords: Vector2i, tile_name: String) -> void:
         print("Cell %s already has cell placed" % hex_coords)
         aplay_notice()
         return
+
     var scene: PackedScene = scenes_database.get(tile_name, null)
     if scene == null:
-        print("Error: No scene found for tile name %s" % tile_name)
+        print("No active tile selected for placement")
         aplay_notice()
         return
 
@@ -165,7 +177,7 @@ func add_hex_at_coord(hex_coords: Vector2i, tile_name: String) -> void:
     data_map_cell.tile_name = hex.data.tile_name
     map_data.data[hex_coords] = data_map_cell
     manager_cells[hex_coords] = hex
-    print("Added cell at %s" % hex_coords)
+    print("Added cell %s at %s" % [data_map_cell.tile_name, hex_coords])
     aplay_confirm()
     return
 
@@ -181,14 +193,13 @@ func remove_hex_at_coord(hex_coords: Vector2i) -> void:
     manager_cells.erase(hex_coords)
     map_data.data.erase(hex_coords)
     aplay_cancel()
-    print("Removed cell at %s" % hex_coords)
+    print("Removed cell %s at %s" % [hex.data.tile_name, hex_coords])
     return
 
 
 func _unhandled_input(event: InputEvent) -> void:
     if event.is_action_pressed("confirm_hex_placement"):
-        var tile_name: String = scenes_database.keys()[randi() % scenes_database.size()] # Random tile for testing
-        add_hex_at_coord(active_hex_coord, tile_name)
+        add_hex_at_coord(active_hex_coord, active_scene_name)
     elif event.is_action_pressed("cancel_hex_placement"):
         remove_hex_at_coord(active_hex_coord)
     elif event.is_action_pressed("save_game"):

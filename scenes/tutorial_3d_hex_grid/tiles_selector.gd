@@ -4,19 +4,39 @@ class_name TilesSelector
 
 @onready var tiles_container: HBoxContainer = $TilesContainer
 
-func setup(scenes_database: Dictionary[String, PackedScene]) -> void:
-    var database_size: int = scenes_database.size()
+var active_button: ButtonTile = null
 
+
+func _ready() -> void:
+    for button: ButtonTile in get_buttons():
+        button.button_activated.connect(on_button_activated)
+    return
+
+
+func get_buttons() -> Array[ButtonTile]:
     var buttons: Array[ButtonTile] = []
     for child in tiles_container.get_children():
         if child is ButtonTile:
             buttons.append(child)
+    return buttons
+
+
+func on_button_activated(button: ButtonTile) -> void:
+    if active_button != null and active_button != button:
+        active_button.activated = false
+        print("Tile deselected: %s" % active_button.scene_name)
+    active_button = button
+    return
+
+
+func setup(scenes_database: Dictionary[String, PackedScene]) -> void:
+    var database_size: int = scenes_database.size()
+    var buttons: Array[ButtonTile] = get_buttons()
     var button_count: int = buttons.size()
 
     for i in range(min(button_count, database_size)):
         var button: ButtonTile = buttons[i]
-        var tile_name: String = scenes_database.keys()[i]
-        var scene: PackedScene = scenes_database[tile_name]
-        var tile: HexTile = scene.instantiate()
-        button.set_icon(tile.data.tile_tex)
-            
+        var scene_name: String = scenes_database.keys()[i]
+        var scene: PackedScene = scenes_database[scene_name]
+        button.setup(scene)
+    return
