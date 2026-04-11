@@ -1,25 +1,26 @@
+# @tool
 extends Node3D
 
 class_name MapGenerator
 
-@export var scenes_array: Array[PackedScene] = [
-    preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_desert00.tscn"),
-    preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_desert01.tscn"),
-    preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_forest00.tscn"),
-    preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_forest01.tscn"),
-    preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_ocean00.tscn"),
-    preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_ocean01.tscn"),
-    preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_highland00.tscn"),
-    preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_highland01.tscn"),
-    preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_hills00.tscn"),
-    preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_hills01.tscn"),
-    preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_marsh00.tscn"),
-    preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_marsh01.tscn"),
-    preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_plains00.tscn"),
-    preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_plains01.tscn"),
-    preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_scrublands00.tscn"),
-    preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_scrublands01.tscn"),
-]
+@export var scenes_database: Dictionary[String, PackedScene] = {
+    "desert00": preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_desert00.tscn"),
+    "desert01": preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_desert01.tscn"),
+    "forest00": preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_forest00.tscn"),
+    "forest01": preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_forest01.tscn"),
+    "ocean00": preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_ocean00.tscn"),
+    "ocean01": preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_ocean01.tscn"),
+    "highland00": preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_highland00.tscn"),
+    "highland01": preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_highland01.tscn"),
+    "hills00": preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_hills00.tscn"),
+    "hills01": preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_hills01.tscn"),
+    "marsh00": preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_marsh00.tscn"),
+    "marsh01": preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_marsh01.tscn"),
+    "plains00": preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_plains00.tscn"),
+    "plains01": preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_plains01.tscn"),
+    "scrublands00": preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_scrublands00.tscn"),
+    "scrublands01": preload("res://scenes/tutorial_3d_hex_grid/hextiles/hextile_scrublands01.tscn"),
+}
 
 const SAVE_PATH = "user://map.tres"
 
@@ -76,8 +77,7 @@ func load_map() -> void:
         return
     map_data = loaded_resource as DataMap
     for cell: Vector2i in map_data.data:
-        var data_map_cell: DataMapCell = map_data.data[cell]
-        add_hex_at_coord(cell)
+        add_hex_at_coord(cell, map_data.data[cell].tile_name)
     print("Map loaded successfully.")
     aplay_confirm()
     return
@@ -146,19 +146,21 @@ func hex_coordinates_to_point(hex_coords: Vector2i) -> Vector3:
     return Vector3(x, xz_plane_y, z)
 
 
-func add_hex_at_coord(hex_coords: Vector2i) -> void:
+func add_hex_at_coord(hex_coords: Vector2i, tile_name: String) -> void:
     if manager_cells.has(hex_coords):
         print("Cell %s already has cell placed" % hex_coords)
         aplay_notice()
         return
+    var scene: PackedScene = scenes_database.get(tile_name, null)
+    if scene == null:
+        print("Error: No scene found for tile name %s" % tile_name)
+        aplay_notice()
+        return
 
-    var id: int = randi() % scenes_array.size()
-    var hex: HexTile = scenes_array[id].instantiate()
+    var hex: HexTile = scene.instantiate()
     add_child(hex)
-    #hex.init_from_data()
     hex.global_position = hex_coordinates_to_point(hex_coords)
     var data_map_cell: DataMapCell = DataMapCell.new()
-    data_map_cell.cell_loc = hex_coords
     data_map_cell.tile_name = hex.data.tile_name
     map_data.data[hex_coords] = data_map_cell
     manager_cells[hex_coords] = hex
@@ -184,15 +186,10 @@ func remove_hex_at_coord(hex_coords: Vector2i) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
     if event.is_action_pressed("confirm_hex_placement"):
-        add_hex_at_coord(active_hex_coord)
+        var tile_name: String = scenes_database.keys()[randi() % scenes_database.size()] # Random tile for testing
+        add_hex_at_coord(active_hex_coord, tile_name)
     elif event.is_action_pressed("cancel_hex_placement"):
         remove_hex_at_coord(active_hex_coord)
     elif event.is_action_pressed("save_game"):
         save_map()
     return
-
-
-func generate_hex_test() -> void:
-    for x: int in total:
-        for z: int in total:
-            add_hex_at_coord(Vector2i(x, z))

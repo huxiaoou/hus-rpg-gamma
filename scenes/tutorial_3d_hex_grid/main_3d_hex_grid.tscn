@@ -9,6 +9,7 @@
 script = ExtResource("1_counh")
 
 [node name="MapGenerator" parent="." unique_id=1109090891 instance=ExtResource("1_xwro2")]
+scenes_array = null
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=909244906]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 9, 8, 22)
