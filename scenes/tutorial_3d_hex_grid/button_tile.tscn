@@ -3,7 +3,6 @@
 [ext_resource type="Theme" uid="uid://xltc222reyb3" path="res://scenes/tutorial_3d_hex_grid/resources/ui/3d_hex_grid.tres" id="1_kwsr7"]
 [ext_resource type="Texture2D" uid="uid://cxd2yaayxbgpb" path="res://scenes/tutorial_3d_hex_grid/assets/ProfileFrame_01_BorderDeco_Gold.png" id="1_qx5nx"]
 [ext_resource type="Script" uid="uid://dtapnrog88iia" path="res://scenes/tutorial_3d_hex_grid/button_tile.gd" id="2_k40ql"]
-[ext_resource type="Texture2D" uid="uid://ldwedwfkdexo" path="res://scenes/tutorial_3d_hex_grid/assets/hexOcean00.png" id="4_2soq3"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_s2gab"]
 device = -1
@@ -21,6 +20,23 @@ theme_type_variation = &"ButtonTile"
 shortcut = SubResource("Shortcut_ect86")
 script = ExtResource("2_k40ql")
 
+[node name="Bg" type="ColorRect" parent="." unique_id=264118986]
+z_index = -2
+custom_minimum_size = Vector2(92, 92)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -46.0
+offset_right = 46.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08965943, 0.089659445, 0.089659445, 1)
+
 [node name="CustomIcon" type="TextureRect" parent="." unique_id=1902872032]
 z_index = -1
 layout_mode = 1
@@ -30,7 +46,6 @@ anchor_bottom = 1.0
 offset_top = -48.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_2soq3")
 expand_mode = 3
 
 [node name="Border" type="TextureRect" parent="." unique_id=1249180392]
@@ -39,6 +54,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_qx5nx")

@@ -8,7 +8,7 @@ device = -1
 keycode = 49
 unicode = 49
 
-[sub_resource type="Shortcut" id="Shortcut_s2gab"]
+[sub_resource type="Shortcut" id="Shortcut_8wjhg"]
 resource_local_to_scene = true
 events = [SubResource("InputEventKey_8wjhg")]
 
@@ -17,7 +17,7 @@ device = -1
 keycode = 50
 unicode = 50
 
-[sub_resource type="Shortcut" id="Shortcut_qmtsm"]
+[sub_resource type="Shortcut" id="Shortcut_s2gab"]
 resource_local_to_scene = true
 events = [SubResource("InputEventKey_s2gab")]
 
@@ -26,7 +26,7 @@ device = -1
 keycode = 51
 unicode = 51
 
-[sub_resource type="Shortcut" id="Shortcut_o7ef4"]
+[sub_resource type="Shortcut" id="Shortcut_qmtsm"]
 resource_local_to_scene = true
 events = [SubResource("InputEventKey_qmtsm")]
 
@@ -35,7 +35,7 @@ device = -1
 keycode = 52
 unicode = 52
 
-[sub_resource type="Shortcut" id="Shortcut_ga6tn"]
+[sub_resource type="Shortcut" id="Shortcut_o7ef4"]
 resource_local_to_scene = true
 events = [SubResource("InputEventKey_o7ef4")]
 
@@ -44,7 +44,7 @@ device = -1
 keycode = 53
 unicode = 53
 
-[sub_resource type="Shortcut" id="Shortcut_2wh2c"]
+[sub_resource type="Shortcut" id="Shortcut_ga6tn"]
 resource_local_to_scene = true
 events = [SubResource("InputEventKey_ga6tn")]
 
@@ -53,7 +53,7 @@ device = -1
 keycode = 54
 unicode = 54
 
-[sub_resource type="Shortcut" id="Shortcut_l4bwq"]
+[sub_resource type="Shortcut" id="Shortcut_avy4p"]
 resource_local_to_scene = true
 events = [SubResource("InputEventKey_avy4p")]
 
@@ -62,7 +62,7 @@ device = -1
 keycode = 55
 unicode = 55
 
-[sub_resource type="Shortcut" id="Shortcut_yxqsc"]
+[sub_resource type="Shortcut" id="Shortcut_tgepa"]
 resource_local_to_scene = true
 events = [SubResource("InputEventKey_tgepa")]
 
@@ -71,7 +71,7 @@ device = -1
 keycode = 56
 unicode = 56
 
-[sub_resource type="Shortcut" id="Shortcut_1kdac"]
+[sub_resource type="Shortcut" id="Shortcut_p8gq1"]
 resource_local_to_scene = true
 events = [SubResource("InputEventKey_p8gq1")]
 
@@ -80,7 +80,7 @@ device = -1
 keycode = 57
 unicode = 57
 
-[sub_resource type="Shortcut" id="Shortcut_vk701"]
+[sub_resource type="Shortcut" id="Shortcut_e1scv"]
 resource_local_to_scene = true
 events = [SubResource("InputEventKey_e1scv")]
 
@@ -89,7 +89,7 @@ device = -1
 keycode = 48
 unicode = 48
 
-[sub_resource type="Shortcut" id="Shortcut_2o48b"]
+[sub_resource type="Shortcut" id="Shortcut_thcbr"]
 resource_local_to_scene = true
 events = [SubResource("InputEventKey_thcbr")]
 
@@ -98,7 +98,7 @@ device = -1
 keycode = 45
 unicode = 45
 
-[sub_resource type="Shortcut" id="Shortcut_dbahe"]
+[sub_resource type="Shortcut" id="Shortcut_dmmbe"]
 resource_local_to_scene = true
 events = [SubResource("InputEventKey_dmmbe")]
 
@@ -107,7 +107,7 @@ device = -1
 keycode = 61
 unicode = 61
 
-[sub_resource type="Shortcut" id="Shortcut_4e8f0"]
+[sub_resource type="Shortcut" id="Shortcut_dprb1"]
 resource_local_to_scene = true
 events = [SubResource("InputEventKey_dprb1")]
 
@@ -130,48 +130,48 @@ alignment = 1
 
 [node name="ButtonTile01" parent="TilesContainer" unique_id=455204150 instance=ExtResource("1_der32")]
 layout_mode = 2
-shortcut = SubResource("Shortcut_s2gab")
+shortcut = SubResource("Shortcut_8wjhg")
 
 [node name="ButtonTile02" parent="TilesContainer" unique_id=836762370 instance=ExtResource("1_der32")]
 layout_mode = 2
-shortcut = SubResource("Shortcut_qmtsm")
+shortcut = SubResource("Shortcut_s2gab")
 
 [node name="ButtonTile03" parent="TilesContainer" unique_id=1366496413 instance=ExtResource("1_der32")]
 layout_mode = 2
-shortcut = SubResource("Shortcut_o7ef4")
+shortcut = SubResource("Shortcut_qmtsm")
 
 [node name="ButtonTile04" parent="TilesContainer" unique_id=2674257 instance=ExtResource("1_der32")]
 layout_mode = 2
-shortcut = SubResource("Shortcut_ga6tn")
+shortcut = SubResource("Shortcut_o7ef4")
 
 [node name="ButtonTile05" parent="TilesContainer" unique_id=582970371 instance=ExtResource("1_der32")]
 layout_mode = 2
-shortcut = SubResource("Shortcut_2wh2c")
+shortcut = SubResource("Shortcut_ga6tn")
 
 [node name="ButtonTile06" parent="TilesContainer" unique_id=453239548 instance=ExtResource("1_der32")]
 layout_mode = 2
-shortcut = SubResource("Shortcut_l4bwq")
+shortcut = SubResource("Shortcut_avy4p")
 
 [node name="ButtonTile07" parent="TilesContainer" unique_id=1498273539 instance=ExtResource("1_der32")]
 layout_mode = 2
-shortcut = SubResource("Shortcut_yxqsc")
+shortcut = SubResource("Shortcut_tgepa")
 
 [node name="ButtonTile08" parent="TilesContainer" unique_id=323771931 instance=ExtResource("1_der32")]
 layout_mode = 2
-shortcut = SubResource("Shortcut_1kdac")
+shortcut = SubResource("Shortcut_p8gq1")
 
 [node name="ButtonTile09" parent="TilesContainer" unique_id=2033836851 instance=ExtResource("1_der32")]
 layout_mode = 2
-shortcut = SubResource("Shortcut_vk701")
+shortcut = SubResource("Shortcut_e1scv")
 
 [node name="ButtonTile10" parent="TilesContainer" unique_id=1455753251 instance=ExtResource("1_der32")]
 layout_mode = 2
-shortcut = SubResource("Shortcut_2o48b")
+shortcut = SubResource("Shortcut_thcbr")
 
 [node name="ButtonTile11" parent="TilesContainer" unique_id=1485824332 instance=ExtResource("1_der32")]
 layout_mode = 2
-shortcut = SubResource("Shortcut_dbahe")
+shortcut = SubResource("Shortcut_dmmbe")
 
 [node name="ButtonTile12" parent="TilesContainer" unique_id=1180897000 instance=ExtResource("1_der32")]
 layout_mode = 2
-shortcut = SubResource("Shortcut_4e8f0")
+shortcut = SubResource("Shortcut_dprb1")
