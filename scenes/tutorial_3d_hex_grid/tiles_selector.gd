@@ -10,6 +10,7 @@ var active_button: ButtonTile = null
 func _ready() -> void:
     for button: ButtonTile in get_buttons():
         button.button_activated.connect(on_button_activated)
+        button.button_deactivated.connect(on_button_deactivated)
     return
 
 
@@ -22,10 +23,19 @@ func get_buttons() -> Array[ButtonTile]:
 
 
 func on_button_activated(button: ButtonTile) -> void:
-    if active_button != null and active_button != button:
+    if active_button == null:
+        active_button = button
+        return
+    if active_button != button:
         active_button.activated = false
         print("Tile deselected: %s" % active_button.scene_name)
     active_button = button
+    return
+
+
+func on_button_deactivated(button: ButtonTile) -> void:
+    if active_button == button:
+        active_button = null
     return
 
 

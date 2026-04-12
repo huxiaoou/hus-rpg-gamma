@@ -28,3 +28,18 @@ func _ready() -> void:
         collision_node.transform = shape_transform
         static_body.add_child(collision_node)
     return
+
+
+func set_transparent(alpha: float) -> void:
+    for i: int in range(mesh.get_surface_count()):
+        var mat = get_active_material(i)
+        mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+        mat.albedo_color.a = alpha
+    return
+
+
+func clear() -> void:
+    set_surface_override_material(0, null)
+    material_override = null
+    queue_free()
+    return

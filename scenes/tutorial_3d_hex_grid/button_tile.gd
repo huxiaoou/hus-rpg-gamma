@@ -4,6 +4,7 @@ class_name ButtonTile
 
 signal scene_selected(scene_name: String)
 signal button_activated(button: ButtonTile)
+signal button_deactivated(button: ButtonTile)
 
 @onready var custom_icon: TextureRect = $CustomIcon
 @onready var activated: bool = false
@@ -26,5 +27,6 @@ func _on_pressed() -> void:
         print("Tile selected: %s" % scene_name)
     else:
         scene_selected.emit("")
+        button_deactivated.emit(self)
         print("Tile deselected: %s" % scene_name)
     return

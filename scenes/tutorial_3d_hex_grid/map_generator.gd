@@ -45,6 +45,7 @@ var active_hex_coord: Vector2i = Vector2i.ZERO
 @onready var tiles_selector: TilesSelector = $UI/TilesSelector
 
 var active_scene_name: String = ""
+var hextile_to_place: HexTile = null
 
 
 func _ready() -> void:
@@ -58,7 +59,29 @@ func _ready() -> void:
 
 
 func on_tile_selected(scene_name: String) -> void:
+    if active_scene_name != scene_name:
+        if hextile_to_place != null:
+            hextile_to_place.clear()
+            hextile_to_place = null
+            print("Old tile to place removed: %s" % active_scene_name)
+
+    generate_hextile_to_place(scene_name)
+    return
+
+
+func generate_hextile_to_place(scene_name: String) -> void:
     active_scene_name = scene_name
+    var scene: PackedScene = scenes_database.get(active_scene_name, null)
+    if scene == null:
+        print("No active tile selected for placement")
+        aplay_notice()
+        hextile_to_place = null
+        return
+
+    hextile_to_place = scene.instantiate()
+    add_child(hextile_to_place)
+    hextile_to_place.set_transparent(0.2)
+    hextile_to_place.global_position = hex_coordinates_to_point(active_hex_coord)
     return
 
 
@@ -91,6 +114,10 @@ func load_map() -> void:
     for cell: Vector2i in map_data.data:
         add_hex_at_coord(cell, map_data.data[cell].tile_name)
     print("Map loaded successfully.")
+    if hextile_to_place != null:
+        hextile_to_place.clear()
+        hextile_to_place = null
+        print("Old tile to place removed: %s" % active_scene_name)
     aplay_confirm()
     return
 
@@ -131,6 +158,10 @@ func _process(_delta: float) -> void:
         var active_hex_center: Vector3 = hex_coordinates_to_point(active_hex_coord)
         cursor.global_position = active_hex_center
 
+        if hextile_to_place != null:
+            hextile_to_place.global_position = active_hex_center
+    return
+
 
 func get_xz_projection() -> Vector3:
     var camera: Camera3D = get_viewport().get_camera_3d()
@@ -164,21 +195,19 @@ func add_hex_at_coord(hex_coords: Vector2i, tile_name: String) -> void:
         aplay_notice()
         return
 
-    var scene: PackedScene = scenes_database.get(tile_name, null)
-    if scene == null:
-        print("No active tile selected for placement")
-        aplay_notice()
-        return
+    if hextile_to_place == null:
+        generate_hextile_to_place(tile_name)
 
-    var hex: HexTile = scene.instantiate()
-    add_child(hex)
-    hex.global_position = hex_coordinates_to_point(hex_coords)
+    hextile_to_place.global_position = hex_coordinates_to_point(hex_coords)
+    hextile_to_place.set_transparent(1.0)
     var data_map_cell: DataMapCell = DataMapCell.new()
-    data_map_cell.tile_name = hex.data.tile_name
+    data_map_cell.tile_name = hextile_to_place.data.tile_name
     map_data.data[hex_coords] = data_map_cell
-    manager_cells[hex_coords] = hex
+    manager_cells[hex_coords] = hextile_to_place
     print("Added cell %s at %s" % [data_map_cell.tile_name, hex_coords])
     aplay_confirm()
+
+    generate_hextile_to_place(tile_name)
     return
 
 
