@@ -40,6 +40,5 @@ func set_transparent(alpha: float) -> void:
 
 func clear() -> void:
     set_surface_override_material(0, null)
-    material_override = null
     queue_free()
     return
