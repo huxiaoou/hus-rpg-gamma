@@ -48,5 +48,7 @@ func setup(scenes_database: Dictionary[String, PackedScene]) -> void:
         var button: ButtonTile = buttons[i]
         var scene_name: String = scenes_database.keys()[i]
         var scene: PackedScene = scenes_database[scene_name]
-        button.setup(scene)
+        var tile: HexTile = scene.instantiate()
+        button.setup(tile.data.tile_tex, tile.data.tile_name)
+        tile.queue_free()
     return

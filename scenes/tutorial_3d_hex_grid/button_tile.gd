@@ -12,11 +12,10 @@ signal button_deactivated(button: ButtonTile)
 var scene_name: String = ""
 
 
-func setup(scene: PackedScene) -> void:
-    var tile: HexTile = scene.instantiate()
-    custom_icon.texture = tile.data.tile_tex
-    scene_name = tile.data.tile_name
-    tile.queue_free()
+func setup(icon_tex: Texture2D, tile_name: String) -> void:
+    custom_icon.texture = icon_tex
+    scene_name = tile_name
+    return
 
 
 func _on_pressed() -> void:
@@ -29,4 +28,25 @@ func _on_pressed() -> void:
         scene_selected.emit("")
         button_deactivated.emit(self)
         print("Tile deselected: %s" % scene_name)
+    return
+
+
+func _unhandled_input(event: InputEvent) -> void:
+    if event.is_action_pressed("cancel_hex_selection") and activated:
+        print("aaa")
+        _on_pressed()
+    return
+
+
+func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
+    if data is Dictionary:
+        if data.has("icon_tex") and data.has("tile_name"):
+            return true
+        return false
+    return false
+
+
+func _drop_data(_at_position: Vector2, data: Variant) -> void:
+    print("Tile dropped: %s" % data["tile_name"])
+    setup(data["icon_tex"], data["tile_name"])
     return

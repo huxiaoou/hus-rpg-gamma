@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://qx0sokn0f5iy"]
+
+[ext_resource type="PackedScene" uid="uid://by7pvuiax7yaw" path="res://scenes/tutorial_3d_hex_grid/tile_legend.tscn" id="1_01em1"]
+[ext_resource type="Script" uid="uid://drrmx8kqjlk3i" path="res://scenes/tutorial_3d_hex_grid/tile_legend.gd" id="2_ix3ut"]
+
+[node name="UIMgrLegend" type="PanelContainer" unique_id=1581412960]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1321867106]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 128
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer" unique_id=893399620]
+layout_mode = 2
+theme_override_constants/h_separation = 64
+columns = 12
+
+[node name="TileLegend" parent="MarginContainer/GridContainer" unique_id=1830650339 instance=ExtResource("1_01em1")]
+layout_mode = 2
+script = ExtResource("2_ix3ut")

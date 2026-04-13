@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://by7pvuiax7yaw"]
+
+[ext_resource type="Texture2D" uid="uid://ldwedwfkdexo" path="res://scenes/tutorial_3d_hex_grid/assets/hexOcean00.png" id="1_84bey"]
+[ext_resource type="Script" uid="uid://drrmx8kqjlk3i" path="res://scenes/tutorial_3d_hex_grid/tile_legend.gd" id="1_ht1au"]
+
+[node name="TileLegend" type="VBoxContainer" unique_id=1830650339]
+z_index = 1
+alignment = 1
+script = ExtResource("1_ht1au")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1397420680]
+custom_minimum_size = Vector2(96, 64)
+layout_mode = 2
+texture = ExtResource("1_84bey")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="." unique_id=954010293]
+layout_mode = 2
+text = "ocean00"
+horizontal_alignment = 1
+vertical_alignment = 1

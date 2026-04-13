@@ -54,6 +54,7 @@ func _ready() -> void:
     tiles_selector.setup(scenes_database)
     for button: ButtonTile in tiles_selector.get_buttons():
         button.scene_selected.connect(on_tile_selected)
+    print(active_scene_name)
     return
     # generate_hex_test()
 
@@ -118,6 +119,7 @@ func load_map() -> void:
         hextile_to_place.clear()
         hextile_to_place = null
         print("Old tile to place removed: %s" % active_scene_name)
+        active_scene_name = ""
     aplay_confirm()
     return
 
@@ -193,6 +195,10 @@ func add_hex_at_coord(hex_coords: Vector2i, tile_name: String) -> void:
     if manager_cells.has(hex_coords):
         print("Cell %s already has cell placed" % hex_coords)
         aplay_notice()
+        return
+
+    if not scenes_database.has(tile_name):
+        print("Invalid tile name: %s" % tile_name)
         return
 
     if hextile_to_place == null:
