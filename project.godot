@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="hus-rpg-gamma"
-run/main_scene="uid://dlw1w54avtm4m"
+run/main_scene="uid://dg8u5wtv7i6w4"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
 [display]
@@ -23,7 +23,8 @@ window/stretch/mode="canvas_items"
 [file_customization]
 
 folder_colors={
-"res://scenes/tutorial_3d_hex_grid/": "orange"
+"res://scenes/tutorial_3d_hex_grid/": "orange",
+"res://scenes/tutorial_3d_hex_grid_beta/": "green"
 }
 
 [input]

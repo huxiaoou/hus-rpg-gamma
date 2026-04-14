@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dg8u5wtv7i6w4"]
+
+[ext_resource type="PackedScene" uid="uid://b0awqxs7f8nny" path="res://scenes/tutorial_3d_hex_grid_beta/ground.tscn" id="1_qg3ix"]
+[ext_resource type="PackedScene" uid="uid://8x15tyfcv35e" path="res://scenes/tutorial_3d_hex_grid/camera_world.tscn" id="1_tqpum"]
+[ext_resource type="PackedScene" uid="uid://8umkoihxd5s6" path="res://scenes/tutorial_3d_hex_grid/character_body_3d.tscn" id="2_q6cxc"]
+[ext_resource type="PackedScene" uid="uid://bafnc0m5kes34" path="res://scenes/tutorial_3d_hex_grid_beta/hex_tile_b.tscn" id="3_2vc6k"]
+
+[node name="Main" type="Node3D" unique_id=149594834]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1565326814]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, -4.7466717, 1.9336386, 3.1744459)
+
+[node name="ground" parent="." unique_id=1439690807 instance=ExtResource("1_qg3ix")]
+
+[node name="CameraWorld" parent="." unique_id=507607233 instance=ExtResource("1_tqpum")]
+
+[node name="CharacterBody3D" parent="." unique_id=726636446 instance=ExtResource("2_q6cxc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6303768, 0)
+
+[node name="HexTile" parent="." unique_id=983128492 instance=ExtResource("3_2vc6k")]

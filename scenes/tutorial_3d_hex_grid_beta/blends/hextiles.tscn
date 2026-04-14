@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://i1ytn227bgat"]
+
+[ext_resource type="PackedScene" uid="uid://bghnk61y6kchd" path="res://scenes/tutorial_3d_hex_grid_beta/blends/hextiles.blend" id="1_ymjt8"]
+
+[node name="hextiles" unique_id=1117786702 instance=ExtResource("1_ymjt8")]
