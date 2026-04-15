@@ -2,18 +2,14 @@ extends MultiMeshInstance3D
 
 class_name HexTileB
 
+@export var multi_mesh_name: String = ""
 @export var hextileb_lib: MeshLibrary = preload("res://scenes/tutorial_3d_hex_grid_beta/meshlibs/hextiles.meshlib")
 @export_enum("HexLow", "HexMid", "HexHigh") var hex_type = "HexMid"
 @export var max_count: int = 10000
 @export var tex: Texture2D = null
 
 var static_body: StaticBody3D = null
-
-var xz_plane_y: float = 0
-var size: float = 0.5
-var w: float = sqrt(3) * size # + 0.01
-var h: float = 1.5 * size #- 0.01
-var offset: float = 0.50 * w
+var mapper: Dictionary[int, Vector2i] = { }
 
 
 func _ready() -> void:
@@ -36,53 +32,38 @@ func _ready() -> void:
     var new_material: StandardMaterial3D = multimesh.mesh.surface_get_material(0).duplicate()
     new_material.albedo_texture = tex
     multimesh.mesh.surface_set_material(0, new_material)
-    
+
     static_body = StaticBody3D.new()
     add_child(static_body)
-    
-    test_generate(5)
+
     return
 
 
-func add_instance_at(pos: Vector3) -> void:
+func add_instance_at(pos: Vector3, hex_coords: Vector2i) -> int:
     var mesh_idx: int = multimesh.visible_instance_count
     var xform: Transform3D = Transform3D(Basis(), pos)
     multimesh.set_instance_transform(mesh_idx, xform)
 
-    var collision_node = CollisionShape3D.new()        
-   
+    var collision_node = CollisionShape3D.new()
+
     # method 2
     collision_node.shape = multimesh.mesh.create_trimesh_shape()
     collision_node.transform = xform
-    collision_node.scale = xform.basis.get_scale()  
-    
+    collision_node.scale = xform.basis.get_scale()
+
     static_body.add_child(collision_node)
+    mapper[mesh_idx] = hex_coords
+
     multimesh.visible_instance_count += 1
-    return
+    return mesh_idx
 
 
-func _unhandled_input(event: InputEvent) -> void:
-    if event.is_action_pressed("confirm_hex_placement"):
-        var pos: Vector3 = get_xz_projection()
-        add_instance_at(pos)
-
-
-func get_xz_projection() -> Vector3:
-    var camera: Camera3D = get_viewport().get_camera_3d()
-    if camera == null:
-        return Vector3.INF
-    var mouse_pos: Vector2 = get_viewport().get_mouse_position()
-    var ray_origin: Vector3 = camera.project_ray_origin(mouse_pos)
-    var ray_direction: Vector3 = camera.project_ray_normal(mouse_pos)
-    var plane: Plane = Plane(Vector3.UP, xz_plane_y)
-    var intersection: Variant = plane.intersects_ray(ray_origin, ray_direction)
-    if intersection == null:
-        return Vector3.INF
-    return intersection
-
-
-func test_generate(n: int = 100) -> void:
-    for x: int in range(n):
-        for z: int in range(n):
-            var pos: Vector3 = Vector3(x * w + offset * int(z % 2 != 0), 0, z * h)
-            add_instance_at(pos)
+func remove_instance_from_index(mesh_idx: int) -> Vector2i:
+    var last_idx: int = multimesh.visible_instance_count - 1
+    var last_xform: Transform3D = multimesh.get_instance_transform(last_idx)
+    multimesh.set_instance_transform(mesh_idx, last_xform)
+    mapper[mesh_idx] = mapper[last_idx]
+    var hex_coords: Vector2i = mapper[mesh_idx]
+    mapper.erase(last_idx)
+    multimesh.visible_instance_count -= 1
+    return hex_coords
