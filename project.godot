@@ -14,6 +14,10 @@ config/name="hus-rpg-gamma"
 run/main_scene="uid://dg8u5wtv7i6w4"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
+[autoload]
+
+ManagerHextileGrid="*uid://b80maulqyu3sg"
+
 [display]
 
 window/size/viewport_width=1920
