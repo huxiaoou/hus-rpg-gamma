@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://8bsrr3na8rgd"]
+
+[ext_resource type="Texture2D" uid="uid://c3dkl344v8gmp" path="res://scenes/tutorial_3d_hex_grid_beta/assets/hexagon_cursor.png" id="1_og80q"]
+[ext_resource type="Script" uid="uid://7as3gflyp8kj" path="res://scenes/tutorial_3d_hex_grid_beta/cursor.gd" id="2_0hjs7"]
+
+[node name="Cursor" type="Sprite3D" unique_id=615462301]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+pixel_size = 0.0008
+texture = ExtResource("1_og80q")
+script = ExtResource("2_0hjs7")

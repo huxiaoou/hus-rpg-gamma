@@ -3,10 +3,13 @@ extends Node
 class_name MapEditorB
 
 @onready var hex_tile: HexTileB = $HexTile
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var cursor: Cursor = $Cursor
 
 var manger_mesh: Dictionary[String, HexTileB] = { }
 var mgr_map_data: BiMap = BiMap.new()
 var xz_plane_y: float = 0
+var active_hex_coord: Vector2i = Vector2i.ZERO
 
 
 class BiMap extends Resource:
@@ -37,6 +40,26 @@ class BiMap extends Resource:
 func _ready() -> void:
     #test_generate(5)
     manger_mesh[hex_tile.multi_mesh_name] = hex_tile
+    init_cursor()
+
+
+func init_cursor() -> void:
+    var active_point: Vector3 = ManagerHextileGrid.get_xz_projection()
+    active_hex_coord = ManagerHextileGrid.point_to_hex_coordinates(active_point)
+    cursor.update_pos_from_hex_coords(active_hex_coord)
+    animation_player.play("cursor_idle")
+    return
+
+
+func _process(_delta: float) -> void:
+    var active_point: Vector3 = ManagerHextileGrid.get_xz_projection()
+    if active_point == Vector3.INF:
+        return
+    var new_active_hex_coord: Vector2i = ManagerHextileGrid.point_to_hex_coordinates(active_point)
+    if new_active_hex_coord != active_hex_coord:
+        active_hex_coord = new_active_hex_coord
+        cursor.update_pos_from_hex_coords(active_hex_coord)
+    return
 
 
 func _unhandled_input(event: InputEvent) -> void:
