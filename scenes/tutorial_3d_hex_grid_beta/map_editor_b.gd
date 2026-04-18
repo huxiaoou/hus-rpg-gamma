@@ -1,5 +1,6 @@
 extends Node
-class_name MapEditorB 
+
+class_name MapEditorB
 
 @onready var tiles: Node = $Tiles
 
@@ -10,6 +11,8 @@ var manger_mesh: Dictionary[String, HexTileB] = { }
 var mgr_map_data: BiMap = BiMap.new()
 var xz_plane_y: float = 0
 var active_hex_coord: Vector2i = Vector2i.ZERO
+
+const HEXTILES_TEX_DIR = "res://scenes/tutorial_3d_hex_grid_beta/assets/hextiles/basic/"
 
 
 class BiMap extends Resource:
@@ -38,12 +41,9 @@ class BiMap extends Resource:
 
 
 func _ready() -> void:
-    #test_generate(5)
-    for node in tiles.get_children():
-        if node is HexTileB:
-            manger_mesh[node.data.multi_mesh_name] = node
     init_cursor()
-    test_generate(10)
+    init_manager_mesh()
+    test_generate(20)
 
 
 func init_cursor() -> void:
@@ -51,6 +51,28 @@ func init_cursor() -> void:
     active_hex_coord = ManagerHextileGrid.point_to_hex_coordinates(active_point)
     cursor.update_pos_from_hex_coords(active_hex_coord)
     animation_player.play("cursor_idle")
+    return
+
+
+func init_manager_mesh() -> void:
+    var dir: DirAccess = DirAccess.open(HEXTILES_TEX_DIR)
+    if not dir:
+        print("Failed to open directory: ", HEXTILES_TEX_DIR)
+        return
+
+    dir.list_dir_begin()
+    for file: String in dir.get_files():
+        if not file.ends_with(".png"):
+            continue
+        var tex: Texture2D = load(dir.get_current_dir() + "/" + file)
+        var data: DataHexTileB = DataHexTileB.new()
+        data.multi_mesh_name = file.split(".")[0]
+        data.tex = tex
+        var hex_tile: HexTileB = HexTileB.new()
+        hex_tile.data = data
+        tiles.add_child(hex_tile)
+        manger_mesh[data.multi_mesh_name] = hex_tile
+        print("Loading texture: ", file)
     return
 
 
