@@ -2,7 +2,8 @@ extends Node
 
 class_name MapEditorB
 
-@onready var hex_tile: HexTileB = $HexTile
+@onready var tiles: Node = $Tiles
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var cursor: Cursor = $Cursor
 
@@ -13,19 +14,19 @@ var active_hex_coord: Vector2i = Vector2i.ZERO
 
 
 class BiMap extends Resource:
-    var forward: Dictionary[Vector2i, DataTileB] = { }
+    var forward: Dictionary[Vector2i, DataRecord] = { }
 
 
-    func add_pair(key: Vector2i, value: DataTileB) -> void:
+    func add_pair(key: Vector2i, value: DataRecord) -> void:
         forward[key] = value
         return
 
 
-    func get_data_tile(coords: Vector2i) -> DataTileB:
+    func get_data_tile(coords: Vector2i) -> DataRecord:
         return forward[coords]
 
 
-    func get_coords(data_tile: DataTileB) -> Vector2i:
+    func get_coords(data_tile: DataRecord) -> Vector2i:
         for key in forward.keys():
             if forward[key].is_equal(data_tile):
                 return key
@@ -39,8 +40,11 @@ class BiMap extends Resource:
 
 func _ready() -> void:
     #test_generate(5)
-    manger_mesh[hex_tile.multi_mesh_name] = hex_tile
+    for node in tiles.get_children():
+        if node is HexTileB:
+            manger_mesh[node.data.multi_mesh_name] = node
     init_cursor()
+    test_generate(5)
 
 
 func init_cursor() -> void:
@@ -71,7 +75,8 @@ func _unhandled_input(event: InputEvent) -> void:
             return
 
         var hex_pos: Vector3 = ManagerHextileGrid.hex_coordinates_to_point(hex_coords, xz_plane_y)
-        var data: DataTileB = hex_tile.add_instance_at(hex_pos)
+        var hex_tile: HexTileB = manger_mesh.values()[randi() % manger_mesh.values().size()]
+        var data: DataRecord = hex_tile.add_instance_at(hex_pos)
         mgr_map_data.add_pair(hex_coords, data)
     elif event.is_action_pressed("cancel_hex_placement"):
         var pos: Vector3 = ManagerHextileGrid.get_xz_projection(xz_plane_y)
@@ -80,9 +85,9 @@ func _unhandled_input(event: InputEvent) -> void:
             print("No hex to remove at coords: ", hex_coords_to_remove)
             return
 
-        var data: DataTileB = mgr_map_data.get_data_tile(hex_coords_to_remove)
+        var data: DataRecord = mgr_map_data.get_data_tile(hex_coords_to_remove)
         var ht: HexTileB = manger_mesh[data.multi_mesh_name]
-        var last_data: DataTileB = ht.remove_instance_from_index(data.id)
+        var last_data: DataRecord = ht.remove_instance_from_index(data.id)
         var last_hex_coords: Vector2i = mgr_map_data.get_coords(last_data)
         mgr_map_data.add_pair(last_hex_coords, data)
         mgr_map_data.remove_pair_by_coords(hex_coords_to_remove)
@@ -93,4 +98,7 @@ func test_generate(n: int = 100) -> void:
     for x: int in range(n):
         for z: int in range(n):
             var pos: Vector3 = ManagerHextileGrid.hex_coordinates_to_point(Vector2i(x, z), xz_plane_y)
-            hex_tile.add_instance_at(pos)
+            var hex_tile: HexTileB = manger_mesh.values()[randi() % manger_mesh.values().size()]
+            print("%s added" % hex_tile.data.multi_mesh_name)
+            var data: DataRecord = hex_tile.add_instance_at(pos)
+            mgr_map_data.add_pair(Vector2i(x, z), data)

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bafnc0m5kes34"]
+
+[ext_resource type="Script" uid="uid://b38g8q0ecu3wu" path="res://scenes/tutorial_3d_hex_grid_beta/hextiles/hex_tile_b.gd" id="1_yty45"]
+[ext_resource type="Resource" uid="uid://bg6qoxji8e7pm" path="res://scenes/tutorial_3d_hex_grid_beta/resources/hills00.tres" id="2_rota6"]
+
+[node name="Hills00" type="MultiMeshInstance3D" unique_id=983128492]
+script = ExtResource("1_yty45")
+data = ExtResource("2_rota6")

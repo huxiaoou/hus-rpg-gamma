@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://15npd3r0qkoq"]
 
 [ext_resource type="Script" uid="uid://bbujmu03hk4d7" path="res://scenes/tutorial_3d_hex_grid_beta/map_editor_b.gd" id="1_0jeju"]
-[ext_resource type="PackedScene" uid="uid://bafnc0m5kes34" path="res://scenes/tutorial_3d_hex_grid_beta/hex_tile_b.tscn" id="2_q2nxf"]
+[ext_resource type="PackedScene" uid="uid://bafnc0m5kes34" path="res://scenes/tutorial_3d_hex_grid_beta/hextiles/hills00.tscn" id="2_q2nxf"]
 [ext_resource type="PackedScene" uid="uid://8bsrr3na8rgd" path="res://scenes/tutorial_3d_hex_grid_beta/cursor.tscn" id="3_odjr5"]
+[ext_resource type="PackedScene" uid="uid://c4lgkohxl2lea" path="res://scenes/tutorial_3d_hex_grid_beta/hextiles/ocean00.tscn" id="4_lx4ni"]
 
 [sub_resource type="Animation" id="Animation_odjr5"]
 length = 0.001
@@ -44,10 +45,14 @@ _data = {
 [node name="MapEditorB" type="Node" unique_id=236790129]
 script = ExtResource("1_0jeju")
 
-[node name="HexTile" parent="." unique_id=983128492 instance=ExtResource("2_q2nxf")]
-
 [node name="Cursor" parent="." unique_id=615462301 instance=ExtResource("3_odjr5")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.01, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1852945700]
 libraries/ = SubResource("AnimationLibrary_ebj7k")
+
+[node name="Tiles" type="Node" parent="." unique_id=1105065607]
+
+[node name="Hills00" parent="Tiles" unique_id=983128492 instance=ExtResource("2_q2nxf")]
+
+[node name="Ocean00" parent="Tiles" unique_id=2030851998 instance=ExtResource("4_lx4ni")]

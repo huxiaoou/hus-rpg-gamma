@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c4lgkohxl2lea"]
+
+[ext_resource type="Script" uid="uid://b38g8q0ecu3wu" path="res://scenes/tutorial_3d_hex_grid_beta/hextiles/hex_tile_b.gd" id="1_ci6t2"]
+[ext_resource type="Resource" uid="uid://caoalnsxb4str" path="res://scenes/tutorial_3d_hex_grid_beta/resources/ocean00.tres" id="2_ci6t2"]
+
+[node name="Ocean00" type="MultiMeshInstance3D" unique_id=983128492]
+script = ExtResource("1_ci6t2")
+data = ExtResource("2_ci6t2")
