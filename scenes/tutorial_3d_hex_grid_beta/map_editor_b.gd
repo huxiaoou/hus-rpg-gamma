@@ -11,6 +11,7 @@ var manger_mesh: Dictionary[String, HexTileB] = { }
 var mgr_map_data: BiMap = BiMap.new()
 var xz_plane_y: float = 0
 var active_hex_coord: Vector2i = Vector2i.ZERO
+var active_hex_tile: HexTileB = null
 
 const HEXTILES_TEX_DIR = "res://scenes/tutorial_3d_hex_grid_beta/assets/hextiles/basic/"
 
@@ -84,11 +85,28 @@ func _process(_delta: float) -> void:
     if new_active_hex_coord != active_hex_coord:
         active_hex_coord = new_active_hex_coord
         cursor.update_pos_from_hex_coords(active_hex_coord)
+
+    if active_hex_tile:
+        active_point = ManagerHextileGrid.hex_coordinates_to_point(active_hex_coord, xz_plane_y)
+        active_hex_tile.update_preview(active_point)
     return
 
 
 func _unhandled_input(event: InputEvent) -> void:
-    if event.is_action_pressed("confirm_hex_placement"):
+    if event.is_action_pressed("ui_accept"):
+        if active_hex_tile:
+            print("Hex tile already active: ", active_hex_tile.data.multi_mesh_name)
+            print("Stopped preview of hex tile: ", active_hex_tile.data.multi_mesh_name)
+            active_hex_tile.stop_preview()
+            active_hex_tile = null
+            return
+        active_hex_tile = manger_mesh.values()[randi() % manger_mesh.values().size()]
+        active_hex_tile.start_preview()
+    elif event.is_action_pressed("confirm_hex_placement"):
+        if (not active_hex_tile) or (not active_hex_tile.toggle_preview):
+            print("No active hex tile to place!")
+            return
+
         var pos: Vector3 = ManagerHextileGrid.get_xz_projection(xz_plane_y)
         var hex_coords: Vector2i = ManagerHextileGrid.point_to_hex_coordinates(pos)
         if hex_coords in mgr_map_data.forward:
@@ -96,10 +114,16 @@ func _unhandled_input(event: InputEvent) -> void:
             return
 
         var hex_pos: Vector3 = ManagerHextileGrid.hex_coordinates_to_point(hex_coords, xz_plane_y)
-        var hex_tile: HexTileB = manger_mesh.values()[randi() % manger_mesh.values().size()]
-        var data: DataRecord = hex_tile.add_instance_at(hex_pos)
+        var data: DataRecord = active_hex_tile.add_instance_at(hex_pos)
         mgr_map_data.add_pair(hex_coords, data)
+
+        # for next placement, start preview immediately
+        active_hex_tile.start_preview()
     elif event.is_action_pressed("cancel_hex_placement"):
+        if active_hex_tile:
+            print("hex tile is active: ", active_hex_tile.data.multi_mesh_name)
+            return
+
         var pos: Vector3 = ManagerHextileGrid.get_xz_projection(xz_plane_y)
         var hex_coords_to_remove: Vector2i = ManagerHextileGrid.point_to_hex_coordinates(pos)
         if hex_coords_to_remove not in mgr_map_data.forward:
@@ -120,6 +144,5 @@ func test_generate(n: int = 100) -> void:
         for z: int in range(n):
             var pos: Vector3 = ManagerHextileGrid.hex_coordinates_to_point(Vector2i(x, z), xz_plane_y)
             var hex_tile: HexTileB = manger_mesh.values()[randi() % manger_mesh.values().size()]
-            # print("%s added" % hex_tile.data.multi_mesh_name)
-            var data: DataRecord = hex_tile.add_instance_at(pos)
+            var data: DataRecord = hex_tile.add_instance_at_without_preview(pos)
             mgr_map_data.add_pair(Vector2i(x, z), data)
