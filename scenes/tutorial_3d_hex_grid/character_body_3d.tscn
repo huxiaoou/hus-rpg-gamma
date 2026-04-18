@@ -11,7 +11,7 @@ radius = 0.1
 height = 0.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hsw6o"]
-radius = 0.2758789
+radius = 0.111816406
 height = 0.5517578
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=726636446]
@@ -22,5 +22,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2629444, 0)
 mesh = SubResource("CapsuleMesh_yuh2r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=938217844]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2713663, 0)
+transform = Transform3D(0.9999437, 0, -0.010611403, 0, 1, 0, 0.010611403, 0, 0.9999437, 0, 0.2713663, 0)
 shape = SubResource("CapsuleShape3D_hsw6o")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1214310446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+light_color = Color(0.60398674, 0.023107959, 0.54457974, 1)
+light_energy = 2.0
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 3.0

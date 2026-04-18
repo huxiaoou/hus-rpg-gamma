@@ -1,6 +1,5 @@
 extends Node
-
-class_name MapEditorB
+class_name MapEditorB 
 
 @onready var tiles: Node = $Tiles
 
@@ -44,7 +43,7 @@ func _ready() -> void:
         if node is HexTileB:
             manger_mesh[node.data.multi_mesh_name] = node
     init_cursor()
-    test_generate(5)
+    test_generate(10)
 
 
 func init_cursor() -> void:
@@ -99,6 +98,6 @@ func test_generate(n: int = 100) -> void:
         for z: int in range(n):
             var pos: Vector3 = ManagerHextileGrid.hex_coordinates_to_point(Vector2i(x, z), xz_plane_y)
             var hex_tile: HexTileB = manger_mesh.values()[randi() % manger_mesh.values().size()]
-            print("%s added" % hex_tile.data.multi_mesh_name)
+            # print("%s added" % hex_tile.data.multi_mesh_name)
             var data: DataRecord = hex_tile.add_instance_at(pos)
             mgr_map_data.add_pair(Vector2i(x, z), data)

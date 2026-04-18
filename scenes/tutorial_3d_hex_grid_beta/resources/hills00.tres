@@ -2,7 +2,7 @@
 
 [ext_resource type="MeshLibrary" uid="uid://courmwdofho5m" path="res://scenes/tutorial_3d_hex_grid_beta/meshlibs/hextiles.meshlib" id="1_ynfjh"]
 [ext_resource type="Script" uid="uid://cxgk1tab6mt58" path="res://scenes/tutorial_3d_hex_grid_beta/data_hex_tile_b.gd" id="2_aay0m"]
-[ext_resource type="Texture2D" uid="uid://qke2x8bugnk" path="res://scenes/tutorial_3d_world/assets/hexHills00.png" id="3_aay0m"]
+[ext_resource type="Texture2D" uid="uid://dfacaqvygpawx" path="res://scenes/tutorial_3d_hex_grid_beta/assets/hextiles/basic/hexHills00.png" id="3_aay0m"]
 
 [resource]
 script = ExtResource("2_aay0m")
