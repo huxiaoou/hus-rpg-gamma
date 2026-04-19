@@ -6,6 +6,7 @@ class_name MapEditorB
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var cursor: Cursor = $Cursor
+@onready var ui_buttons_hextile_b: UIButtonsHextileB = $UI/UIButtonsHextileB
 
 var manger_mesh: Dictionary[String, HexTileB] = { }
 var mgr_map_data: BiMap = BiMap.new()
@@ -44,7 +45,9 @@ class BiMap extends Resource:
 func _ready() -> void:
     init_cursor()
     init_manager_mesh()
+    init_ui()
     test_generate(20)
+    print("MapEditorB ready with %d hex tiles in manager." % manger_mesh.size())
 
 
 func init_cursor() -> void:
@@ -79,6 +82,33 @@ func init_manager_mesh() -> void:
     return
 
 
+func init_ui() -> void:
+    var i: int = 0
+    var keys: Array[String] = manger_mesh.keys()
+    for btn: ButtonHextileB in ui_buttons_hextile_b.get_buttons():
+        btn.btn_hextile_pressed.connect(on_btn_pressed)
+        while i < keys.size():
+            var key: String = keys[i]
+            if not key.ends_with("HexMid"):
+                i += 1
+                continue
+
+            var hextile: HexTileB = manger_mesh[keys[i]]
+            if not hextile.data.hex_name.ends_with("00"):
+                i += 1
+                continue
+
+            var data: DataBtnHextile = DataBtnHextile.new()
+            data.icon = hextile.data.tex
+            data.hex_name = hextile.data.hex_name
+            data.hex_type = hextile.data.get_hex_type_enum()
+            btn.setup(data)
+            i += 1
+            print("Button setup with hex tile: %s" % key)
+            break
+    return
+
+
 func _process(_delta: float) -> void:
     var active_point: Vector3 = ManagerHextileGrid.get_xz_projection()
     if active_point == Vector3.INF:
@@ -94,13 +124,26 @@ func _process(_delta: float) -> void:
     return
 
 
+func on_btn_pressed(multi_mesh_name: String) -> void:
+    var prev_name: String = ""
+    if active_hex_tile:
+        print("Hex tile already active: ", active_hex_tile.data.multi_mesh_name)
+        print("Stopped preview of hex tile: ", active_hex_tile.data.multi_mesh_name)
+        prev_name = active_hex_tile.data.multi_mesh_name
+        active_hex_tile.stop_preview()
+        active_hex_tile = null
+    if prev_name != multi_mesh_name:
+        active_hex_tile = manger_mesh.get(multi_mesh_name)
+        if not active_hex_tile:
+            print("Failed to find hex tile for multi_mesh_name: ", multi_mesh_name)
+            return
+        active_hex_tile.start_preview()
+    return
+
+
 func _unhandled_input(event: InputEvent) -> void:
     if event.is_action_pressed("ui_accept"):
         if active_hex_tile:
-            print("Hex tile already active: ", active_hex_tile.data.multi_mesh_name)
-            print("Stopped preview of hex tile: ", active_hex_tile.data.multi_mesh_name)
-            active_hex_tile.stop_preview()
-            active_hex_tile = null
             return
         active_hex_tile = manger_mesh.values()[randi() % manger_mesh.values().size()]
         active_hex_tile.start_preview()

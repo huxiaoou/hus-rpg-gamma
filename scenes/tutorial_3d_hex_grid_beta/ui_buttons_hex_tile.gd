@@ -10,6 +10,7 @@ const BTN_SHORTCUT_RES_DIR: String = "res://scenes/tutorial_3d_hex_grid_beta/res
 
 func _ready() -> void:
     setup()
+    print("UIButtonsHextileB ready with %d buttons." % h_box_container.get_child_count())
 
 
 func setup() -> void:
@@ -27,3 +28,12 @@ func setup() -> void:
         var btn: ButtonHextileB = scene_btn.instantiate()
         h_box_container.add_child(btn)
         btn.shortcut = shortcut
+
+
+func get_buttons() -> Array[ButtonHextileB]:
+    var ary: Array[ButtonHextileB] = []
+    for node in h_box_container.get_children():
+        if node is not ButtonHextileB:
+            continue
+        ary.append(node)
+    return ary
