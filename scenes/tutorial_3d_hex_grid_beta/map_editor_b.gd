@@ -66,14 +66,16 @@ func init_manager_mesh() -> void:
         if not file.ends_with(".png"):
             continue
         var tex: Texture2D = load(dir.get_current_dir() + "/" + file)
-        var data: DataHexTileB = DataHexTileB.new()
-        data.multi_mesh_name = file.split(".")[0]
-        data.tex = tex
-        var hex_tile: HexTileB = HexTileB.new()
-        hex_tile.data = data
-        tiles.add_child(hex_tile)
-        manger_mesh[data.multi_mesh_name] = hex_tile
-        print("Loading texture: ", file)
+        for hex_type: String in DataHexTileB.get_hex_types():
+            var data: DataHexTileB = DataHexTileB.new()
+            data.multi_mesh_name = file.split(".")[0] + "_" + hex_type
+            data.tex = tex
+            data.hex_type = hex_type
+            var hex_tile: HexTileB = HexTileB.new()
+            hex_tile.data = data
+            tiles.add_child(hex_tile)
+            manger_mesh[data.multi_mesh_name] = hex_tile
+            print("Loading texture: %s-%s" % [file, hex_type])
     return
 
 
