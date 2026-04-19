@@ -1,0 +1,14 @@
+[gd_resource type="Shortcut" format=3 uid="uid://bi0d4n31xvfbq"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_mfmsa"]
+device = -1
+keycode = 51
+unicode = 51
+
+[sub_resource type="InputEventKey" id="InputEventKey_xnanf"]
+device = -1
+keycode = 4194441
+unicode = 51
+
+[resource]
+events = [SubResource("InputEventKey_mfmsa"), SubResource("InputEventKey_xnanf")]

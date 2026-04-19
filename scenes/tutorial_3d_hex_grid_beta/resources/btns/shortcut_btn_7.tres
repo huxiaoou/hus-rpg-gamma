@@ -1,0 +1,14 @@
+[gd_resource type="Shortcut" format=3 uid="uid://nejr6bsmd4b1"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_exi51"]
+device = -1
+keycode = 55
+unicode = 55
+
+[sub_resource type="InputEventKey" id="InputEventKey_kydc5"]
+device = -1
+keycode = 4194445
+unicode = 55
+
+[resource]
+events = [SubResource("InputEventKey_exi51"), SubResource("InputEventKey_kydc5")]
