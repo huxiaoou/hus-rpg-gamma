@@ -177,6 +177,11 @@ func _unhandled_input(event: InputEvent) -> void:
         var last_hex_coords: Vector2i = mgr_map_data.get_coords(last_data)
         mgr_map_data.add_pair(last_hex_coords, data)
         mgr_map_data.remove_pair_by_coords(hex_coords_to_remove)
+    elif event.is_action_pressed("cancel_hex_selection"):
+        if active_hex_tile:
+            print("Hex tile selection canceled: ", active_hex_tile.data.multi_mesh_name)
+            active_hex_tile.stop_preview()
+            active_hex_tile = null
     return
 
 
