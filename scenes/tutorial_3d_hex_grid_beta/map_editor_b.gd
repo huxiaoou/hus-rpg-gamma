@@ -142,12 +142,7 @@ func on_btn_pressed(multi_mesh_name: String) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-    if event.is_action_pressed("ui_accept"):
-        if active_hex_tile:
-            return
-        active_hex_tile = manger_mesh.values()[randi() % manger_mesh.values().size()]
-        active_hex_tile.start_preview()
-    elif event.is_action_pressed("confirm_hex_placement"):
+    if event.is_action_pressed("confirm_hex_placement"):
         if (not active_hex_tile) or (not active_hex_tile.toggle_preview):
             print("No active hex tile to place!")
             return
@@ -157,8 +152,9 @@ func _unhandled_input(event: InputEvent) -> void:
         if hex_coords in mgr_map_data.forward:
             print("Hex already occupied at coords: ", hex_coords)
             return
-
         var hex_pos: Vector3 = ManagerHextileGrid.hex_coordinates_to_point(hex_coords, xz_plane_y)
+
+        active_hex_tile.stop_preview()
         var data: DataRecord = active_hex_tile.add_instance_at(hex_pos)
         mgr_map_data.add_pair(hex_coords, data)
 
@@ -189,5 +185,5 @@ func test_generate(n: int = 100) -> void:
         for z: int in range(n):
             var pos: Vector3 = ManagerHextileGrid.hex_coordinates_to_point(Vector2i(x, z), xz_plane_y)
             var hex_tile: HexTileB = manger_mesh.values()[randi() % manger_mesh.values().size()]
-            var data: DataRecord = hex_tile.add_instance_at_without_preview(pos)
+            var data: DataRecord = hex_tile.add_instance_at(pos)
             mgr_map_data.add_pair(Vector2i(x, z), data)

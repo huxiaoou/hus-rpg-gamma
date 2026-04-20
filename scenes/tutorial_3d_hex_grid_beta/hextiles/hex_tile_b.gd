@@ -16,23 +16,28 @@ func _ready() -> void:
     if multimesh == null:
         multimesh = MultiMesh.new()
         multimesh.transform_format = MultiMesh.TRANSFORM_3D
-
     var lib_mesh: Mesh = data.get_mesh()
     if not lib_mesh:
         print("HexTileB: No mesh found in data!")
         return
 
-    multimesh.mesh = lib_mesh.duplicate(true)
+    multimesh.mesh = lib_mesh.duplicate()
+    multimesh.use_colors = true
     multimesh.instance_count = data.max_count
     multimesh.visible_instance_count = 0
 
-    var new_material: StandardMaterial3D = multimesh.mesh.surface_get_material(0)
-    new_material.albedo_texture = data.tex
-    # multimesh.mesh.surface_set_material(0, new_material)
+    var material: StandardMaterial3D = null
+    for i: int in range(multimesh.mesh.get_surface_count()):
+        material = multimesh.mesh.surface_get_material(i).duplicate(true)
+        if i == 0:
+            material.albedo_texture = data.tex
+        material.vertex_color_use_as_albedo = true
+        material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+        material.depth_draw_mode = BaseMaterial3D.DEPTH_DRAW_ALWAYS
+        multimesh.mesh.surface_set_material(i, material)
 
     static_body = StaticBody3D.new()
     add_child(static_body)
-
     return
 
 
@@ -46,19 +51,25 @@ func update_last_instance_transform(pos: Vector3) -> void:
 func start_preview() -> void:
     toggle_preview = true
     multimesh.visible_instance_count += 1
+    multimesh.set_instance_color(
+        multimesh.visible_instance_count - 1,
+        Color(1.0, 1.0, 1.0, 0.2),
+    )
     return
 
 
 func update_preview(pos: Vector3) -> void:
-    if not toggle_preview:
-        return
     update_last_instance_transform(pos)
     return
 
 
 func stop_preview() -> void:
-    toggle_preview = false
+    multimesh.set_instance_color(
+        multimesh.visible_instance_count - 1,
+        Color(1.0, 1.0, 1.0, 1.0),
+    )
     multimesh.visible_instance_count -= 1
+    toggle_preview = false
     return
 
 
@@ -80,10 +91,11 @@ func get_new_added_data() -> DataRecord:
 
 
 func add_instance_at(pos: Vector3) -> DataRecord:
-    if not toggle_preview:
-        print("Preview must be active to add instance.")
-        return null
-
+    multimesh.visible_instance_count += 1
+    multimesh.set_instance_color(
+        multimesh.visible_instance_count - 1,
+        Color(1.0, 1.0, 1.0, 1.0),
+    )
     update_preview(pos)
     add_collision_at(pos)
     return get_new_added_data()
@@ -102,10 +114,3 @@ func remove_instance_from_index(mesh_idx: int) -> DataRecord:
     data_to_remove.multi_mesh_name = data.multi_mesh_name
     data_to_remove.id = last_idx
     return data_to_remove
-
-
-func add_instance_at_without_preview(pos: Vector3) -> DataRecord:
-    multimesh.visible_instance_count += 1
-    update_last_instance_transform(pos)
-    add_collision_at(pos)
-    return get_new_added_data()
