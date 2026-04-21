@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bbujmu03hk4d7" path="res://scenes/tutorial_3d_hex_grid_beta/map_editor_b.gd" id="1_0jeju"]
 [ext_resource type="PackedScene" uid="uid://prfnk26y7576" path="res://scenes/tutorial_3d_hex_grid_beta/ui_buttons_hex_tile.tscn" id="3_lx4ni"]
 [ext_resource type="PackedScene" uid="uid://8bsrr3na8rgd" path="res://scenes/tutorial_3d_hex_grid_beta/cursor.tscn" id="3_odjr5"]
+[ext_resource type="PackedScene" uid="uid://c162kyuwyr602" path="res://scenes/tutorial_3d_hex_grid_beta/editor_audio_stream_player.tscn" id="4_lx4ni"]
 
 [sub_resource type="Animation" id="Animation_odjr5"]
 length = 0.001
@@ -55,3 +56,5 @@ libraries/ = SubResource("AnimationLibrary_ebj7k")
 [node name="UI" type="CanvasLayer" parent="." unique_id=677592727]
 
 [node name="UIButtonsHextileB" parent="UI" unique_id=1127018684 instance=ExtResource("3_lx4ni")]
+
+[node name="ASPlayer" parent="." unique_id=1260767464 instance=ExtResource("4_lx4ni")]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://utlbtdrj5ctd"
+path="res://.godot/imported/Hovers A 001.wav-fa826988303c5c941e28e1585ff06501.sample"
+
+[deps]
+
+source_file="res://scenes/tutorial_3d_hex_grid_beta/assets/audios/Hovers A 001.wav"
+dest_files=["res://.godot/imported/Hovers A 001.wav-fa826988303c5c941e28e1585ff06501.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

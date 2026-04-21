@@ -7,6 +7,7 @@ class_name MapEditorB
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var cursor: Cursor = $Cursor
 @onready var ui_buttons_hextile_b: UIButtonsHextileB = $UI/UIButtonsHextileB
+@onready var as_player: EditorAudioStreamPlayer = $ASPlayer
 
 var manger_mesh: Dictionary[String, HexTileB] = { }
 var mgr_map_data: BiMap = BiMap.new()
@@ -118,6 +119,7 @@ func _process(_delta: float) -> void:
     if new_active_hex_coord != active_hex_coord:
         active_hex_coord = new_active_hex_coord
         cursor.update_pos_from_hex_coords(active_hex_coord)
+        as_player.play_hex_changed()
 
     if active_hex_tile:
         active_point = ManagerHextileGrid.hex_coordinates_to_point(active_hex_coord, xz_plane_y)
@@ -126,6 +128,7 @@ func _process(_delta: float) -> void:
 
 
 func on_btn_pressed(multi_mesh_name: String, btn: ButtonHextileB) -> void:
+    as_player.play_btn_pressed()
     var prev_name: String = ""
     if active_hex_tile:
         print("Hex tile already active: ", active_hex_tile.data.multi_mesh_name)
@@ -147,17 +150,20 @@ func on_btn_pressed(multi_mesh_name: String, btn: ButtonHextileB) -> void:
 func _unhandled_input(event: InputEvent) -> void:
     if event.is_action_pressed("confirm_hex_placement"):
         if (not active_hex_tile) or (not active_hex_tile.toggle_preview):
+            as_player.play_warning()
             print("No active hex tile to place!")
             return
 
         var pos: Vector3 = ManagerHextileGrid.get_xz_projection(xz_plane_y)
         var hex_coords: Vector2i = ManagerHextileGrid.point_to_hex_coordinates(pos)
         if hex_coords in mgr_map_data.forward:
+            as_player.play_warning()
             print("Hex already occupied at coords: ", hex_coords)
             return
-        var hex_pos: Vector3 = ManagerHextileGrid.hex_coordinates_to_point(hex_coords, xz_plane_y)
+        as_player.play_confirm()
 
         active_hex_tile.stop_preview()
+        var hex_pos: Vector3 = ManagerHextileGrid.hex_coordinates_to_point(hex_coords, xz_plane_y)
         var data: DataRecord = active_hex_tile.add_instance_at(hex_pos)
         mgr_map_data.add_pair(hex_coords, data)
 
@@ -165,15 +171,18 @@ func _unhandled_input(event: InputEvent) -> void:
         active_hex_tile.start_preview()
     elif event.is_action_pressed("cancel_hex_placement"):
         if active_hex_tile:
+            as_player.play_warning()
             print("hex tile is active: ", active_hex_tile.data.multi_mesh_name)
             return
 
         var pos: Vector3 = ManagerHextileGrid.get_xz_projection(xz_plane_y)
         var hex_coords_to_remove: Vector2i = ManagerHextileGrid.point_to_hex_coordinates(pos)
         if hex_coords_to_remove not in mgr_map_data.forward:
+            as_player.play_warning()
             print("No hex to remove at coords: ", hex_coords_to_remove)
             return
 
+        as_player.play_confirm()
         var data: DataRecord = mgr_map_data.get_data_tile(hex_coords_to_remove)
         var ht: HexTileB = manger_mesh[data.multi_mesh_name]
         var last_data: DataRecord = ht.remove_instance_from_index(data.id)
@@ -183,12 +192,21 @@ func _unhandled_input(event: InputEvent) -> void:
     elif event.is_action_pressed("cancel_hex_selection"):
         if active_hex_btn:
             active_hex_btn.pressed.emit()
+            as_player.play_cancel()
     if event.is_action_pressed("debug_test_increase"):
-        if active_hex_btn and active_hex_btn.increase_hex_type():
-            active_hex_btn.pressed.emit()
+        if active_hex_btn:
+            if active_hex_btn.increase_hex_type():
+                active_hex_btn.pressed.emit()
+                return
+        as_player.play_warning()
+        print("Failed to increase hex type beyond max for button")
     elif event.is_action_pressed("debug_test_decrease"):
-        if active_hex_btn and active_hex_btn.decrease_hex_type():
-            active_hex_btn.pressed.emit()
+        if active_hex_btn:
+            if active_hex_btn.decrease_hex_type():
+                active_hex_btn.pressed.emit()
+                return
+        as_player.play_warning()
+        print("Failed to decrease hex type beyond min for button")
     return
 
 
