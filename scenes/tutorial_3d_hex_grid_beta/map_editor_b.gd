@@ -13,6 +13,7 @@ var mgr_map_data: BiMap = BiMap.new()
 var xz_plane_y: float = 0
 var active_hex_coord: Vector2i = Vector2i.ZERO
 var active_hex_tile: HexTileB = null
+var active_hex_btn: ButtonHextileB = null
 
 const HEXTILES_TEX_DIR = "res://scenes/tutorial_3d_hex_grid_beta/assets/hextiles/basic/"
 
@@ -124,7 +125,7 @@ func _process(_delta: float) -> void:
     return
 
 
-func on_btn_pressed(multi_mesh_name: String) -> void:
+func on_btn_pressed(multi_mesh_name: String, btn: ButtonHextileB) -> void:
     var prev_name: String = ""
     if active_hex_tile:
         print("Hex tile already active: ", active_hex_tile.data.multi_mesh_name)
@@ -132,12 +133,14 @@ func on_btn_pressed(multi_mesh_name: String) -> void:
         prev_name = active_hex_tile.data.multi_mesh_name
         active_hex_tile.stop_preview()
         active_hex_tile = null
+        active_hex_btn = null
     if prev_name != multi_mesh_name:
         active_hex_tile = manger_mesh.get(multi_mesh_name)
         if not active_hex_tile:
             print("Failed to find hex tile for multi_mesh_name: ", multi_mesh_name)
             return
         active_hex_tile.start_preview()
+        active_hex_btn = btn
     return
 
 
@@ -178,10 +181,14 @@ func _unhandled_input(event: InputEvent) -> void:
         mgr_map_data.add_pair(last_hex_coords, data)
         mgr_map_data.remove_pair_by_coords(hex_coords_to_remove)
     elif event.is_action_pressed("cancel_hex_selection"):
-        if active_hex_tile:
-            print("Hex tile selection canceled: ", active_hex_tile.data.multi_mesh_name)
-            active_hex_tile.stop_preview()
-            active_hex_tile = null
+        if active_hex_btn:
+            active_hex_btn.pressed.emit()
+    if event.is_action_pressed("debug_test_increase"):
+        if active_hex_btn and active_hex_btn.increase_hex_type():
+            active_hex_btn.pressed.emit()
+    elif event.is_action_pressed("debug_test_decrease"):
+        if active_hex_btn and active_hex_btn.decrease_hex_type():
+            active_hex_btn.pressed.emit()
     return
 
 

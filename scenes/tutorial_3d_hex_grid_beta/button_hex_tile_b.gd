@@ -2,12 +2,15 @@ extends Button
 
 class_name ButtonHextileB
 
-signal btn_hextile_pressed(multi_mesh_name: String)
+signal btn_hextile_pressed(multi_mesh_name: String, btn: ButtonHextileB)
 
 @export var data: DataBtnHextile
 var multi_mesh_name: String:
     get:
         return data.multi_mesh_name if data else ""
+var ary: Array = DataHexTileB.HexType.values()
+var min_val: int = ary.min()
+var max_val: int = ary.max()
 
 @onready var hextype_bar: ProgressBar = $HextypeBar
 
@@ -21,29 +24,27 @@ func setup(_data: DataBtnHextile) -> void:
     return
 
 
-func set_hex_type(new_type: DataHexTileB.HexType) -> void:
-    var ary: Array = DataHexTileB.HexType.values()
-    var min_val: int = ary.min()
-    var max_val: int = ary.max()
+func set_hex_type(new_type: DataHexTileB.HexType) -> bool:
+    if new_type > max_val or new_type < min_val:
+        print("Invalid hex type: ", new_type)
+        return false
 
-    data.hex_type = clampi(new_type, min_val, max_val) as DataHexTileB.HexType
+    data.hex_type = new_type
     hextype_bar.value = data.hex_type + 1.0
     var w: float = (data.hex_type - min_val) / float(max_val - min_val)
     hextype_bar.modulate = MIN_COLOR.lerp(MAX_COLOR, w)
-    return
-
-
-func _unhandled_input(event: InputEvent) -> void:
-    if event.is_action_pressed("debug_test_increase"):
-        var new_type: DataHexTileB.HexType = (data.hex_type + 1) as DataHexTileB.HexType
-        set_hex_type(new_type)
-    elif event.is_action_pressed("debug_test_decrease"):
-        var new_type: DataHexTileB.HexType = (data.hex_type - 1) as DataHexTileB.HexType
-        set_hex_type(new_type)
-    return
+    return true
 
 
 func _on_pressed() -> void:
     print("Button pressed: %s" % multi_mesh_name)
-    btn_hextile_pressed.emit(multi_mesh_name)
+    btn_hextile_pressed.emit(multi_mesh_name, self)
     return
+
+
+func increase_hex_type() -> bool:
+    return set_hex_type(data.hex_type + 1)
+
+
+func decrease_hex_type() -> bool:
+    return set_hex_type(data.hex_type - 1)
