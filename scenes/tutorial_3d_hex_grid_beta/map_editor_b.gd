@@ -17,10 +17,11 @@ var active_hex_tile: HexTileB = null
 var active_hex_btn: ButtonHextileB = null
 
 const HEXTILES_TEX_DIR = "res://scenes/tutorial_3d_hex_grid_beta/assets/hextiles/basic/"
+const SAVE_PATH = "user://mapb.tres"
 
 
 class BiMap extends Resource:
-    var forward: Dictionary[Vector2i, DataRecord] = { }
+    @export var forward: Dictionary[Vector2i, DataRecord] = { }
 
 
     func add_pair(key: Vector2i, value: DataRecord) -> void:
@@ -207,6 +208,8 @@ func _unhandled_input(event: InputEvent) -> void:
                 return
         as_player.play_warning()
         print("Failed to decrease hex type beyond min for button")
+    elif event.is_action_pressed("save_game"):
+        save_map()
     return
 
 
@@ -217,3 +220,14 @@ func test_generate(n: int = 100) -> void:
             var hex_tile: HexTileB = manger_mesh.values()[randi() % manger_mesh.values().size()]
             var data: DataRecord = hex_tile.add_instance_at(pos)
             mgr_map_data.add_pair(Vector2i(x, z), data)
+
+
+func save_map() -> void:
+    var error: int = ResourceSaver.save(mgr_map_data, SAVE_PATH)
+    if error != OK:
+        print("Error saving map: %s" % error)
+        as_player.play_warning()
+        return
+    print("Map saved successfully.")
+    as_player.play_confirm()
+    return
