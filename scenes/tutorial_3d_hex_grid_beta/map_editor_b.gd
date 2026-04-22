@@ -20,36 +20,11 @@ const HEXTILES_TEX_DIR = "res://scenes/tutorial_3d_hex_grid_beta/assets/hextiles
 const SAVE_PATH = "user://mapb.tres"
 
 
-class BiMap extends Resource:
-    @export var forward: Dictionary[Vector2i, DataRecord] = { }
-
-
-    func add_pair(key: Vector2i, value: DataRecord) -> void:
-        forward[key] = value
-        return
-
-
-    func get_data_tile(coords: Vector2i) -> DataRecord:
-        return forward[coords]
-
-
-    func get_coords(data_tile: DataRecord) -> Vector2i:
-        for key in forward.keys():
-            if forward[key].is_equal(data_tile):
-                return key
-        return Vector2.INF
-
-
-    func remove_pair_by_coords(coords: Vector2i) -> void:
-        forward.erase(coords)
-        return
-
-
 func _ready() -> void:
     init_cursor()
     init_manager_mesh()
     init_ui()
-    test_generate(20)
+    load_map()
     print("MapEditorB ready with %d hex tiles in manager." % manger_mesh.size())
 
 
@@ -229,5 +204,38 @@ func save_map() -> void:
         as_player.play_warning()
         return
     print("Map saved successfully.")
+    as_player.play_confirm()
+    return
+
+
+func load_map() -> void:
+    if not ResourceLoader.exists(SAVE_PATH):
+        print("Error loading map: No resource found at %s" % SAVE_PATH)
+        as_player.play_warning()
+        return
+    var loaded_resource: Resource = ResourceLoader.load(SAVE_PATH, "BiMap")
+    if loaded_resource == null:
+        print("Error loading map: Resource not found at %s" % SAVE_PATH)
+        as_player.play_warning()
+        return
+    if loaded_resource is not BiMap:
+        print("Error loading map: Resource at %s is not of type BiMap" % SAVE_PATH)
+        as_player.play_warning()
+        return
+
+    mgr_map_data.forward.clear()
+    var loaded_data: BiMap = loaded_resource as BiMap
+    for cell: Vector2i in loaded_data.forward.keys():
+        var data_record: DataRecord = loaded_data.get_data_tile(cell)
+        var hex_tile: HexTileB = manger_mesh[data_record.multi_mesh_name]
+        var pos: Vector3 = ManagerHextileGrid.hex_coordinates_to_point(cell, xz_plane_y)
+        var data: DataRecord = hex_tile.add_instance_at(pos)
+        mgr_map_data.add_pair(cell, data)
+    print("Map loaded successfully.")
+
+    if active_hex_tile:
+        active_hex_tile.stop_preview()
+        active_hex_tile = null
+        active_hex_btn = null
     as_player.play_confirm()
     return
