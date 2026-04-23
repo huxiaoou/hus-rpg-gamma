@@ -28,6 +28,7 @@ func setup() -> void:
         var btn: ButtonHextileB = scene_btn.instantiate()
         h_box_container.add_child(btn)
         btn.shortcut = shortcut
+        btn.display_shortcut()
 
 
 func get_buttons() -> Array[ButtonHextileB]:

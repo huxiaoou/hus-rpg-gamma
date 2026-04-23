@@ -13,6 +13,7 @@ var min_val: int = ary.min()
 var max_val: int = ary.max()
 
 @onready var hextype_bar: ProgressBar = $HextypeBar
+@onready var label: Label = $Label
 
 const MIN_COLOR: Color = Color(0.0, 0.5, 0.8)
 const MAX_COLOR: Color = Color(0.0, 0.5, 0.2)
@@ -22,6 +23,13 @@ func setup(_data: DataBtnHextile) -> void:
     data = _data
     icon = data.icon
     return
+
+
+func display_shortcut():
+    if shortcut and not shortcut.events.is_empty():
+        var event: InputEvent = shortcut.events[0]
+        if event is InputEventKey:
+            label.text = event.as_text_keycode()
 
 
 func set_hex_type(new_type: DataHexTileB.HexType) -> bool:
