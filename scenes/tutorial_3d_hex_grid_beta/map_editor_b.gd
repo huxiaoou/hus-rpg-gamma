@@ -7,6 +7,7 @@ class_name MapEditorB
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var cursor: Cursor = $Cursor
 @onready var ui_buttons_hextile_b: UIButtonsHextileB = $UI/UIButtonsHextileB
+@onready var ui_menu_legend: UIMenuLegend = $UI/UIMenuLegend
 @onready var as_player: EditorAudioStreamPlayer = $ASPlayer
 
 var manger_mesh: Dictionary[String, HexTileB] = { }
@@ -25,6 +26,7 @@ func _ready() -> void:
     init_manager_mesh()
     init_ui()
     load_map()
+    ui_menu_legend.setup(manger_mesh)
     print("MapEditorB ready with %d hex tiles in manager." % manger_mesh.size())
 
 

@@ -56,3 +56,21 @@ func increase_hex_type() -> bool:
 
 func decrease_hex_type() -> bool:
     return set_hex_type(data.hex_type - 1)
+
+
+func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
+    if _data is Dictionary:
+        if _data.has("icon_tex") and _data.has("hex_name"):
+            return true
+        return false
+    return false
+
+
+func _drop_data(_at_position: Vector2, _data: Variant) -> void:
+    print("Tile dropped: %s" % _data["hex_name"])
+    var new_data: DataBtnHextile = DataBtnHextile.new()
+    new_data.icon = _data["icon_tex"]
+    new_data.hex_name = _data["hex_name"]
+    new_data.hex_type = data.hex_type if data else DataHexTileB.HexType.HEXMID
+    setup(new_data)
+    return

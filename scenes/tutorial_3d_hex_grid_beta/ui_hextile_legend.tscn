@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://doi0ygcd23pdt"]
+
+[ext_resource type="Texture2D" uid="uid://d2rjmibvv665d" path="res://scenes/tutorial_3d_hex_grid_beta/assets/hextiles/basic/hexBase00.png" id="1_eank2"]
+[ext_resource type="Script" uid="uid://bmyxqpvnf75iv" path="res://scenes/tutorial_3d_hex_grid_beta/ui_hextile_legend.gd" id="1_en8a2"]
+
+[node name="UIHextileLegend" type="VBoxContainer" unique_id=2038474514]
+offset_right = 64.0
+offset_bottom = 80.0
+script = ExtResource("1_en8a2")
+
+[node name="Texture" type="TextureRect" parent="." unique_id=1411027514]
+custom_minimum_size = Vector2(108, 108)
+layout_mode = 2
+texture = ExtResource("1_eank2")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="." unique_id=1280340555]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "hexBase00"
+horizontal_alignment = 1
+vertical_alignment = 1

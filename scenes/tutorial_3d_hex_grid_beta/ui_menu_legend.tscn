@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dj2you1sxvkvk"]
+
+[ext_resource type="Script" uid="uid://dxloqyvpuv4tc" path="res://scenes/tutorial_3d_hex_grid_beta/ui_menu_legend.gd" id="1_8vb8u"]
+
+[node name="UIMenuLegend" type="ScrollContainer" unique_id=917445798]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -166.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8vb8u")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=176433909]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 12
+columns = 16
