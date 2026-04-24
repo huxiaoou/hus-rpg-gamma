@@ -8,6 +8,7 @@ signal btn_hextile_pressed(multi_mesh_name: String, btn: ButtonHextileB)
 var multi_mesh_name: String:
     get:
         return data.multi_mesh_name if data else ""
+var is_active: bool = false
 var ary: Array = DataHexTileB.HexType.values()
 var min_val: int = ary.min()
 var max_val: int = ary.max()
@@ -47,8 +48,13 @@ func set_hex_type(new_type: DataHexTileB.HexType) -> bool:
 func _on_pressed() -> void:
     print("Button pressed: %s" % multi_mesh_name)
     btn_hextile_pressed.emit(multi_mesh_name, self)
+    is_active = not is_active
+    toggle_shader()
     return
 
+func toggle_shader() -> void:
+    material.set_shader_parameter("enabled", is_active)
+    return
 
 func increase_hex_type() -> bool:
     return set_hex_type(data.hex_type + 1)

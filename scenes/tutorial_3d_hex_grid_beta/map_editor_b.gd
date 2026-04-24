@@ -114,6 +114,8 @@ func on_btn_pressed(multi_mesh_name: String, btn: ButtonHextileB) -> void:
         prev_name = active_hex_tile.data.multi_mesh_name
         active_hex_tile.stop_preview()
         active_hex_tile = null
+        active_hex_btn.is_active = false
+        active_hex_btn.toggle_shader()
         active_hex_btn = null
     if prev_name != multi_mesh_name:
         active_hex_tile = manger_mesh.get(multi_mesh_name)
