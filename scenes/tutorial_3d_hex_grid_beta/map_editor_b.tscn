@@ -59,5 +59,6 @@ libraries/ = SubResource("AnimationLibrary_ebj7k")
 [node name="UIButtonsHextileB" parent="UI" unique_id=1127018684 instance=ExtResource("3_lx4ni")]
 
 [node name="UIMenuLegend" parent="UI" unique_id=917445798 instance=ExtResource("4_ebj7k")]
+visible = false
 
 [node name="ASPlayer" parent="." unique_id=1260767464 instance=ExtResource("4_lx4ni")]

@@ -90,7 +90,7 @@ func init_ui() -> void:
     return
 
 
-func _process(_delta: float) -> void:
+func update_active_hex_from_cursor() -> void:
     var active_point: Vector3 = ManagerHextileGrid.get_xz_projection()
     if active_point == Vector3.INF:
         return
@@ -100,9 +100,9 @@ func _process(_delta: float) -> void:
         cursor.update_pos_from_hex_coords(active_hex_coord)
         as_player.play_hex_changed()
 
-    if active_hex_tile:
-        active_point = ManagerHextileGrid.hex_coordinates_to_point(active_hex_coord, xz_plane_y)
-        active_hex_tile.update_preview(active_point)
+        if active_hex_tile:
+            active_point = ManagerHextileGrid.hex_coordinates_to_point(active_hex_coord, xz_plane_y)
+            active_hex_tile.update_preview(active_point)
     return
 
 
@@ -117,6 +117,8 @@ func on_btn_activated(multi_mesh_name: String, btn: ButtonHextileB) -> void:
         print("Failed to find hex tile for multi_mesh_name: ", multi_mesh_name)
         return
     active_hex_tile.start_preview()
+    var active_point: Vector3 = ManagerHextileGrid.hex_coordinates_to_point(active_hex_coord, xz_plane_y)
+    active_hex_tile.update_preview(active_point)
     active_hex_btn = btn
     return
 
@@ -201,6 +203,8 @@ func _unhandled_input(event: InputEvent) -> void:
         print("Failed to decrease hex type beyond min for button")
     elif event.is_action_pressed("save_game"):
         save_map()
+    elif event is InputEventMouseMotion:
+        update_active_hex_from_cursor()
     return
 
 

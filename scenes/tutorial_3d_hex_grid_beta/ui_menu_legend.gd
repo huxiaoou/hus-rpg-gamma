@@ -1,9 +1,9 @@
-extends ScrollContainer
+extends PanelContainer
 
 class_name UIMenuLegend
 
 @export var scene_hextile_legend: PackedScene = preload("res://scenes/tutorial_3d_hex_grid_beta/ui_hextile_legend.tscn")
-@onready var grid_container: GridContainer = $GridContainer
+@onready var grid_container: GridContainer = $MarginContainer/VBoxContainer/ScrollContainer/GridContainer
 
 
 func setup(manger_mesh: Dictionary[String, HexTileB]) -> void:
@@ -18,3 +18,8 @@ func setup(manger_mesh: Dictionary[String, HexTileB]) -> void:
         var legend: UIHextileLegend = scene_hextile_legend.instantiate()
         grid_container.add_child(legend)
         legend.setup(mesh_name, hextile.data.tex)
+
+func _unhandled_input(event: InputEvent) -> void:
+    if event.is_action_pressed("toggle_menu"):
+        print("aaa")
+        visible = !visible
