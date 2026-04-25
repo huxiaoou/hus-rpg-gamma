@@ -3,16 +3,17 @@
 [ext_resource type="Script" uid="uid://cbbck5mjq3h6k" path="res://scenes/tutorial_3d_hex_grid_beta/ui_buttons_hex_tile.gd" id="1_8a5ij"]
 
 [node name="UIButtonsHextileB" type="MarginContainer" unique_id=1127018684]
+custom_minimum_size = Vector2(1920, 128)
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -264.0
+offset_top = -64.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(0.5, 0.5)
 pivot_offset_ratio = Vector2(0.5, 1)
-theme_override_constants/margin_bottom = 32
+mouse_filter = 0
+theme_override_constants/margin_bottom = 16
 script = ExtResource("1_8a5ij")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=503017538]

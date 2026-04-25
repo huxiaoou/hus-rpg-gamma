@@ -15,32 +15,34 @@ shader_parameter/speed = 0.3
 
 [node name="Button" type="Button" unique_id=286322571]
 material = SubResource("ShaderMaterial_86yok")
-custom_minimum_size = Vector2(256, 256)
+custom_minimum_size = Vector2(128, 128)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -132.0
-offset_top = -132.0
-offset_right = 132.0
-offset_bottom = 132.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
+expand_icon = true
 script = ExtResource("2_p5x4k")
 
 [node name="HextypeBar" type="ProgressBar" parent="." unique_id=521720526]
 modulate = Color(0, 0.52156866, 0.11764706, 1)
-custom_minimum_size = Vector2(192, 32)
+custom_minimum_size = Vector2(96, 32)
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -110.0
-offset_top = -32.0
-offset_right = 82.0
+offset_left = -52.0
+offset_top = -36.0
+offset_right = 44.0
+offset_bottom = -4.0
 grow_horizontal = 0
 grow_vertical = 2
 rotation = 4.712389

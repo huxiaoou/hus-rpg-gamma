@@ -59,15 +59,14 @@ func deactivete() -> void:
 
 
 func _on_pressed() -> void:
-    is_active = not is_active
-    if is_active:
-        print("Button activated: %s" % multi_mesh_name)
+    if not is_active:
         btn_hextile_activated.emit(multi_mesh_name, self)
         activate()
+        print("Button activated: %s" % multi_mesh_name)
     else:
-        print("Button deactivated: %s" % multi_mesh_name)
         btn_hextile_deactivated.emit(multi_mesh_name, self)
         deactivete()
+        print("Button deactivated: %s" % multi_mesh_name)
     return
 
 
