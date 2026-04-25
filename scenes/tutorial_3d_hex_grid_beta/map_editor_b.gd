@@ -66,7 +66,8 @@ func init_ui() -> void:
     var i: int = 0
     var keys: Array[String] = manger_mesh.keys()
     for btn: ButtonHextileB in ui_buttons_hextile_b.get_buttons():
-        btn.btn_hextile_pressed.connect(on_btn_pressed)
+        btn.btn_hextile_activated.connect(on_btn_activated)
+        btn.btn_hextile_deactivated.connect(on_btn_deactivated)
         while i < keys.size():
             var key: String = keys[i]
             if not key.ends_with("HexMid"):
@@ -105,25 +106,27 @@ func _process(_delta: float) -> void:
     return
 
 
-func on_btn_pressed(multi_mesh_name: String, btn: ButtonHextileB) -> void:
+func on_btn_activated(multi_mesh_name: String, btn: ButtonHextileB) -> void:
     as_player.play_btn_pressed()
-    var prev_name: String = ""
-    if active_hex_tile:
-        print("Hex tile already active: ", active_hex_tile.data.multi_mesh_name)
-        print("Stopped preview of hex tile: ", active_hex_tile.data.multi_mesh_name)
-        prev_name = active_hex_tile.data.multi_mesh_name
+    if active_hex_btn and active_hex_btn != btn:
+        active_hex_btn.deactivete()
+        active_hex_tile.stop_preview()
+
+    active_hex_tile = manger_mesh.get(multi_mesh_name)
+    if not active_hex_tile:
+        print("Failed to find hex tile for multi_mesh_name: ", multi_mesh_name)
+        return
+    active_hex_tile.start_preview()
+    active_hex_btn = btn
+    return
+
+
+func on_btn_deactivated(_multi_mesh_name: String, btn: ButtonHextileB) -> void:
+    as_player.play_cancel()
+    if active_hex_btn and active_hex_btn == btn:
         active_hex_tile.stop_preview()
         active_hex_tile = null
-        active_hex_btn.is_active = false
-        active_hex_btn.toggle_shader()
         active_hex_btn = null
-    if prev_name != multi_mesh_name:
-        active_hex_tile = manger_mesh.get(multi_mesh_name)
-        if not active_hex_tile:
-            print("Failed to find hex tile for multi_mesh_name: ", multi_mesh_name)
-            return
-        active_hex_tile.start_preview()
-        active_hex_btn = btn
     return
 
 
@@ -171,19 +174,28 @@ func _unhandled_input(event: InputEvent) -> void:
         mgr_map_data.remove_pair_by_coords(hex_coords_to_remove)
     elif event.is_action_pressed("cancel_hex_selection"):
         if active_hex_btn:
-            active_hex_btn.pressed.emit()
+            active_hex_btn.deactivete()
+            active_hex_tile.stop_preview()
+            active_hex_tile = null
+            active_hex_btn = null
             as_player.play_cancel()
-    if event.is_action_pressed("debug_test_increase"):
+    elif event.is_action_pressed("debug_test_increase"):
         if active_hex_btn:
             if active_hex_btn.increase_hex_type():
-                active_hex_btn.pressed.emit()
+                as_player.play_btn_pressed()
+                active_hex_tile.stop_preview()
+                active_hex_tile = manger_mesh[active_hex_btn.multi_mesh_name]
+                active_hex_tile.start_preview()
                 return
         as_player.play_warning()
         print("Failed to increase hex type beyond max for button")
     elif event.is_action_pressed("debug_test_decrease"):
         if active_hex_btn:
             if active_hex_btn.decrease_hex_type():
-                active_hex_btn.pressed.emit()
+                as_player.play_btn_pressed()
+                active_hex_tile.stop_preview()
+                active_hex_tile = manger_mesh[active_hex_btn.multi_mesh_name]
+                active_hex_tile.start_preview()
                 return
         as_player.play_warning()
         print("Failed to decrease hex type beyond min for button")

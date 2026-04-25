@@ -2,7 +2,8 @@ extends Button
 
 class_name ButtonHextileB
 
-signal btn_hextile_pressed(multi_mesh_name: String, btn: ButtonHextileB)
+signal btn_hextile_activated(multi_mesh_name: String, btn: ButtonHextileB)
+signal btn_hextile_deactivated(multi_mesh_name: String, btn: ButtonHextileB)
 
 @export var data: DataBtnHextile
 var multi_mesh_name: String:
@@ -45,16 +46,35 @@ func set_hex_type(new_type: DataHexTileB.HexType) -> bool:
     return true
 
 
-func _on_pressed() -> void:
-    print("Button pressed: %s" % multi_mesh_name)
-    btn_hextile_pressed.emit(multi_mesh_name, self)
-    is_active = not is_active
+func activate() -> void:
+    is_active = true
     toggle_shader()
     return
+
+
+func deactivete() -> void:
+    is_active = false
+    toggle_shader()
+    return
+
+
+func _on_pressed() -> void:
+    is_active = not is_active
+    if is_active:
+        print("Button activated: %s" % multi_mesh_name)
+        btn_hextile_activated.emit(multi_mesh_name, self)
+        activate()
+    else:
+        print("Button deactivated: %s" % multi_mesh_name)
+        btn_hextile_deactivated.emit(multi_mesh_name, self)
+        deactivete()
+    return
+
 
 func toggle_shader() -> void:
     material.set_shader_parameter("enabled", is_active)
     return
+
 
 func increase_hex_type() -> bool:
     return set_hex_type(data.hex_type + 1)
