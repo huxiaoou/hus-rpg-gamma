@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://b0awqxs7f8nny"]
 
+[ext_resource type="Texture2D" uid="uid://gegx4df671um" path="res://scenes/tutorial_3d_hex_grid_beta/assets/Tile_07-512x512.png" id="1_s4f12"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j82db"]
-albedo_color = Color(0.09185078, 0.09185078, 0.09185078, 1)
+albedo_texture = ExtResource("1_s4f12")
+uv1_scale = Vector3(50, 50, 50)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_j82db"]
 material = SubResource("StandardMaterial3D_j82db")

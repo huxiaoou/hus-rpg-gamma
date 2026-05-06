@@ -3,7 +3,7 @@ shader_type canvas_item;
 uniform bool enabled = false;
 uniform vec4 tint: source_color = vec4(1.0, 1.0, 1.0, 0.0);
 uniform vec4 shine_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
-uniform float border_width : hint_range(0.0, 0.1) = 0.050;
+uniform float border_width : hint_range(0.0, 0.1) = 0.040;
 uniform float shine_size : hint_range(0.0, 0.5) = 0.2;
 uniform float speed : hint_range(0.0, 5.0) = 0.3;
 

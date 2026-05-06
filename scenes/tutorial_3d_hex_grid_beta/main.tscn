@@ -2,19 +2,48 @@
 
 [ext_resource type="PackedScene" uid="uid://b0awqxs7f8nny" path="res://scenes/tutorial_3d_hex_grid_beta/ground.tscn" id="1_qg3ix"]
 [ext_resource type="PackedScene" uid="uid://8x15tyfcv35e" path="res://scenes/tutorial_3d_hex_grid/camera_world.tscn" id="1_tqpum"]
-[ext_resource type="PackedScene" uid="uid://8umkoihxd5s6" path="res://scenes/tutorial_3d_hex_grid/character_body_3d.tscn" id="2_q6cxc"]
 [ext_resource type="PackedScene" uid="uid://15npd3r0qkoq" path="res://scenes/tutorial_3d_hex_grid_beta/map_editor_b.tscn" id="4_gcna5"]
+[ext_resource type="PackedScene" uid="uid://dv10fm24f3814" path="res://scenes/decor.tscn" id="5_qg3ix"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gcna5"]
+sky_top_color = Color(0.8362096, 0.5983534, 0.36630455, 1)
+sky_horizon_color = Color(0.22849366, 0.6992891, 0.9068015, 1)
+sky_curve = 0.35676205
+
+[sub_resource type="Sky" id="Sky_qg3ix"]
+sky_material = SubResource("ProceduralSkyMaterial_gcna5")
+
+[sub_resource type="Environment" id="Environment_auu2s"]
+background_mode = 2
+sky = SubResource("Sky_qg3ix")
+ambient_light_color = Color(0.91726154, 0.9172619, 0.91726166, 1)
+ssr_enabled = true
+ssao_enabled = true
+fog_enabled = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_gcna5"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 4.0
+dof_blur_far_transition = 8.0
+dof_blur_near_enabled = true
+dof_blur_near_transition = 2.0
 
 [node name="Main" type="Node3D" unique_id=149594834]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=759651954]
+environment = SubResource("Environment_auu2s")
+camera_attributes = SubResource("CameraAttributesPractical_gcna5")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1565326814]
-transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, -4.7466717, 1.9336386, 3.1744459)
+transform = Transform3D(0.9139355, 0.105044186, -0.3920302, 0, 0.9659259, 0.25881907, 0.40585953, -0.23654394, 0.8827939, -4.2230034, -0.18998337, 2.6694396)
+shadow_enabled = true
+
+[node name="CameraWorld" parent="." unique_id=507607233 instance=ExtResource("1_tqpum")]
+ylim = Vector2(-0.5, 0)
 
 [node name="ground" parent="." unique_id=1439690807 instance=ExtResource("1_qg3ix")]
 
-[node name="CameraWorld" parent="." unique_id=507607233 instance=ExtResource("1_tqpum")]
-
-[node name="CharacterBody3D" parent="." unique_id=726636446 instance=ExtResource("2_q6cxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6303768, 0)
-
 [node name="MapEditorB" parent="." unique_id=236790129 instance=ExtResource("4_gcna5")]
+
+[node name="Decor" parent="." unique_id=566049278 instance=ExtResource("5_qg3ix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40408346, 0.49036455, 0.8394792)
