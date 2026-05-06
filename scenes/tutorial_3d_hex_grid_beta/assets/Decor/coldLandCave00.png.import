@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d2n2otc4ubi28"
-path.s3tc="res://.godot/imported/coldLandCave00.png-128c7f43cf6ac9b28cc46bb7f6150638.s3tc.ctex"
+path="res://.godot/imported/coldLandCave00.png-128c7f43cf6ac9b28cc46bb7f6150638.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://scenes/tutorial_3d_hex_grid_beta/assets/Decor/coldLandCave00.png"
-dest_files=["res://.godot/imported/coldLandCave00.png-128c7f43cf6ac9b28cc46bb7f6150638.s3tc.ctex"]
+dest_files=["res://.godot/imported/coldLandCave00.png-128c7f43cf6ac9b28cc46bb7f6150638.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

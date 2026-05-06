@@ -2,12 +2,21 @@
 
 [ext_resource type="Texture2D" uid="uid://d2n2otc4ubi28" path="res://scenes/tutorial_3d_hex_grid_beta/assets/Decor/coldLandCave00.png" id="1_lfnyo"]
 [ext_resource type="Script" uid="uid://chkq0kd1j1ver" path="res://scenes/decor.gd" id="1_ovbhi"]
+[ext_resource type="Shader" uid="uid://duek43wv7haj" path="res://scenes/decor.gdshader" id="2_gxjgo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gqn4o"]
+render_priority = 0
+shader = ExtResource("2_gxjgo")
+shader_parameter/tex = ExtResource("1_lfnyo")
+shader_parameter/border_color = Color(1, 1, 1, 1)
+shader_parameter/border_width = 5.0
 
 [node name="Decor" type="Node3D" unique_id=566049278]
 script = ExtResource("1_ovbhi")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=2041487198]
-transform = Transform3D(1, 0, 0, 0, 0.8660255, 0.50000006, 0, -0.50000006, 0.8660255, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_gqn4o")
 pixel_size = 0.004
 shaded = true
 alpha_cut = 2
